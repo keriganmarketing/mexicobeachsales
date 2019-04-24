@@ -5,6 +5,7 @@
 Homestead.json
 Homestead.yaml
 node_modules
+vendor
 npm-debug.log
 package-lock.json
 Vagrantfile

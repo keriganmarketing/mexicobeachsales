@@ -249,6 +249,19 @@ function heateorSssVerticalCounterPreview(val){
     }
 }
 
+function heateor_sss_toggle_fb_share_count_options() {
+    if(heateorSssHorizontalFacebookShareEnabled && (heateorSssHorizontalShares || heateorSssHorizontalTotalShares)){
+        jQuery('#heateor_sss_fb_share_count_options').css('display', 'table-row-group');
+    }else{
+        jQuery('#heateor_sss_fb_share_count_options').css('display', 'none');
+    }
+    if(heateorSssVerticalFacebookShareEnabled && (heateorSssVerticalShares || heateorSssVerticalTotalShares)){
+        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'table-row-group');
+    }else{
+        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'none');
+    }
+}
+
 jQuery(document).ready(function() {
     // instagram username option
     jQuery('input#heateor_sss_instagram').click(function(){
@@ -264,6 +277,23 @@ jQuery(document).ready(function() {
         }else{
             jQuery('#heateor_sss_vertical_instagram_options').css('display', 'none');
         }
+    });
+    // facebook share count option
+    jQuery('input#heateor_sss_facebook').click(function(){
+        if(jQuery(this).is(':checked')){
+            heateorSssHorizontalFacebookShareEnabled = true;
+        }else{
+            heateorSssHorizontalFacebookShareEnabled = false;
+        }
+        heateor_sss_toggle_fb_share_count_options();
+    });
+    jQuery('input#heateor_sss_vertical_sharing_facebook').click(function(){
+        if(jQuery(this).is(':checked')){
+            heateorSssVerticalFacebookShareEnabled = true;
+        }else{
+            heateorSssVerticalFacebookShareEnabled = false;
+        }
+        heateor_sss_toggle_fb_share_count_options();
     });
     jQuery('input#heateor_sss_vertical_instagram_username').keyup(function(){
         jQuery('#heateor_sss_instagram_username').val(jQuery(this).val().trim());

@@ -48,7 +48,7 @@ class Sassy_Social_Share_Standard_Widget extends WP_Widget {
 		parent::__construct( 
 			'Heateor_SSS_Sharing', // unique id 
 			__( 'Sassy Social Share - Standard Widget' ), // Widget title 
-			array( 'description' => __( 'Standard sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Google+ and many more', 'sassy-social-share' ) )
+			array( 'description' => __( 'Standard sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Whatsapp and many more', 'sassy-social-share' ) )
 		); 
 	}  
 
@@ -94,12 +94,20 @@ class Sassy_Social_Share_Standard_Widget extends WP_Widget {
 		} else {
 			$sharing_url = get_permalink( $post->ID );
 		}
-		$sharing_url = $this->public_class_object->apply_target_share_url_filter( $sharing_url, 'horizontal', ! is_singular() ? true : false );
+		$share_count_url = $sharing_url;
+		if ( isset( $instance['target_url'] ) && $instance['target_url'] == 'default' && is_singular() ) {
+			$share_count_url = get_permalink( $post -> ID );
+		}
+		$custom_post_url = $this->public_class_object->apply_target_share_url_filter( $sharing_url, 'horizontal', ! is_singular() ? true : false );
+		if ( $custom_post_url != $sharing_url ) {
+			$sharing_url = $custom_post_url;
+			$share_count_url = $sharing_url;
+		}
 		// share count transient ID
 		$this->public_class_object->share_count_transient_id = $this->public_class_object->get_share_count_transient_id( $sharing_url );
 		$cached_share_count = $this->public_class_object->get_cached_share_count( $this->public_class_object->share_count_transient_id );
 
-		echo "<div class='heateor_sss_sharing_container heateor_sss_horizontal_sharing' " . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . $sharing_url . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1"' ) .">";
+		echo "<div class='heateor_sss_sharing_container heateor_sss_horizontal_sharing' " . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . ( isset( $share_count_url ) && $share_count_url ? $share_count_url : $sharing_url ) . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1"' ) .">";
 		
 		echo $before_widget;
 		
@@ -250,7 +258,7 @@ class Sassy_Social_Share_Floating_Widget extends WP_Widget {
 			'Sassy Social Share - Floating Widget', // widget title 
 			// additional parameters 
 			array(
-				'description' => __( 'Floating sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Google+ and many more', 'sassy-social-share' ) ) 
+				'description' => __( 'Floating sharing widget. Let your website users share content on popular Social networks like Facebook, Twitter, Tumblr, Whatsapp and many more', 'sassy-social-share' ) ) 
 			); 
 	}  
 
@@ -293,7 +301,15 @@ class Sassy_Social_Share_Floating_Widget extends WP_Widget {
 		} else {
 			$sharing_url = get_permalink( $post->ID );
 		}
-		$sharing_url = $this->public_class_object->apply_target_share_url_filter( $sharing_url, 'vertical', false );
+		$share_count_url = $sharing_url;
+		if ( isset( $instance['target_url'] ) && $instance['target_url'] == 'default' && is_singular() ) {
+			$share_count_url = get_permalink( $post -> ID );
+		}
+		$custom_post_url = $this->public_class_object->apply_target_share_url_filter( $sharing_url, 'vertical', false );
+		if ( $custom_post_url != $sharing_url ) {
+			$sharing_url = $custom_post_url;
+			$share_count_url = $sharing_url;
+		}
 		$ssOffset = 0;
 		if ( isset( $instance['alignment'] ) && isset( $instance[$instance['alignment'] . '_offset'] ) ) {
 			$ssOffset = $instance[$instance['alignment'] . '_offset'];
@@ -303,7 +319,7 @@ class Sassy_Social_Share_Floating_Widget extends WP_Widget {
 		$this->public_class_object->share_count_transient_id = $this->public_class_object->get_share_count_transient_id( $sharing_url );
 		$cached_share_count = $this->public_class_object->get_cached_share_count( $this->public_class_object->share_count_transient_id );
 
-		echo "<div class='heateor_sss_sharing_container heateor_sss_vertical_sharing" . ( isset( $this->options['hide_mobile_sharing'] ) ? ' heateor_sss_hide_sharing' : '' ) . ( isset( $this->options['bottom_mobile_sharing'] ) ? ' heateor_sss_bottom_sharing' : '' ) . "' ss-offset='" . $ssOffset . "' style='width:" . ( ( $this->options['vertical_sharing_size'] ? $this->options['vertical_sharing_size'] : 35) + 4) . "px;".( isset( $instance['alignment'] ) && $instance['alignment'] != '' && isset( $instance[$instance['alignment'].'_offset'] ) ? $instance['alignment'].': '. ( $instance[$instance['alignment'].'_offset'] == '' ? 0 : $instance[$instance['alignment'].'_offset'] ) .'px;' : '' ).( isset( $instance['top_offset'] ) ? 'top: '. ( $instance['top_offset'] == '' ? 0 : $instance['top_offset'] ) .'px;' : '' ) . ( isset( $instance['vertical_bg'] ) && $instance['vertical_bg'] != '' ? 'background-color: '.$instance['vertical_bg'] . ';' : '-webkit-box-shadow:none;box-shadow:none;' ) . "' " . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . $sharing_url . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1"' ) .">";
+		echo "<div class='heateor_sss_sharing_container heateor_sss_vertical_sharing" . ( isset( $this->options['hide_mobile_sharing'] ) ? ' heateor_sss_hide_sharing' : '' ) . ( isset( $this->options['bottom_mobile_sharing'] ) ? ' heateor_sss_bottom_sharing' : '' ) . "' ss-offset='" . $ssOffset . "' style='width:" . ( ( $this->options['vertical_sharing_size'] ? $this->options['vertical_sharing_size'] : 35) + 4) . "px;".( isset( $instance['alignment'] ) && $instance['alignment'] != '' && isset( $instance[$instance['alignment'].'_offset'] ) ? $instance['alignment'].': '. ( $instance[$instance['alignment'].'_offset'] == '' ? 0 : $instance[$instance['alignment'].'_offset'] ) .'px;' : '' ).( isset( $instance['top_offset'] ) ? 'top: '. ( $instance['top_offset'] == '' ? 0 : $instance['top_offset'] ) .'px;' : '' ) . ( isset( $instance['vertical_bg'] ) && $instance['vertical_bg'] != '' ? 'background-color: '.$instance['vertical_bg'] . ';' : '-webkit-box-shadow:none;box-shadow:none;' ) . "' " . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . ( isset( $share_count_url ) && $share_count_url ? $share_count_url : $sharing_url ) . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1"' ) .">";
 		
 		$short_url = $this->public_class_object->get_short_url( $sharing_url, $post_id );
 
@@ -517,9 +533,6 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		if ( $instance['github'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Github" title="Github" class="heateorSssSharing heateorSssGithubBackground"><a target="_blank" aria-label="Github" href="'. $instance['github'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssGithubSvg"></ss></a></i></li>';
 		}
-		if ( $instance['google'] ) {
-			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Google+" title="Google+" class="heateorSssSharing heateorSssGoogleplusBackground"><a target="_blank" aria-label="Google+" href="'. $instance['google'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssGoogleplusSvg"></ss></a></i></li>';
-		}
 		if ( $instance['linkedin'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Linkedin" title="Linkedin" class="heateorSssSharing heateorSssLinkedinBackground"><a target="_blank" aria-label="Linkedin" href="'. $instance['linkedin'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssLinkedinSvg"></ss></a></i></li>';
 		}
@@ -537,6 +550,9 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		}
 		if ( $instance['snapchat'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Snapchat" title="Snapchat" class="heateorSssSharing heateorSssSnapchatBackground"><a target="_blank" aria-label="Snapchat" href="'. $instance['snapchat'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssSnapchatSvg"></ss></a></i></li>';
+		}
+		if ( $instance['telegram'] ) {
+			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Telegram" title="Telegram" class="heateorSssSharing heateorSssTelegramBackground"><a target="_blank" aria-label="Telegram" href="'. $instance['telegram'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssTelegramSvg"></ss></a></i></li>';
 		}
 		if ( $instance['tumblr'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Tumblr" title="Tumblr" class="heateorSssSharing heateorSssTumblrBackground"><a target="_blank" aria-label="Tumblr" href="'. $instance['tumblr'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssTumblrSvg"></ss></a></i></li>';
@@ -587,13 +603,13 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		$instance['foursquare'] = $new_instance['foursquare'];
 		$instance['github'] = $new_instance['github'];
 		$instance['gitlab'] = $new_instance['gitlab'];
-		$instance['google'] = $new_instance['google'];
 		$instance['linkedin'] = $new_instance['linkedin'];
 		$instance['linkedin_company'] = $new_instance['linkedin_company'];
 		$instance['medium'] = $new_instance['medium'];
 		$instance['mewe'] = $new_instance['mewe'];
 		$instance['odnoklassniki'] = $new_instance['odnoklassniki'];
 		$instance['snapchat'] = $new_instance['snapchat'];
+		$instance['telegram'] = $new_instance['telegram'];
 		$instance['tumblr'] = $new_instance['tumblr'];
 		$instance['vimeo'] = $new_instance['vimeo'];
 		$instance['vkontakte'] = $new_instance['vkontakte'];
@@ -616,7 +632,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 	public function form( $instance ) { 
 		
 		/* default widget settings. */ 
-		$defaults = array( 'title' => '', 'size' => '32', 'icon_shape' => 'round', 'facebook' => '', 'twitter' => '', 'instagram' => '', 'pinterest' => '', 'behance' => '', 'flickr' => '', 'foursquare' => '', 'github' => '', 'gitlab' => '', 'google' => '', 'linkedin' => '', 'linkedin_company' => '', 'medium' => '', 'mewe' => '', 'odnoklassniki' => '', 'snapchat' => '', 'tumblr' => '', 'vimeo' => '', 'vkontakte' => '', 'xing' => '', 'youtube' => '', 'youtube_channel' => '', 'rss_feed' => '', 'before_widget_content' => '', 'after_widget_content' => '' );
+		$defaults = array( 'title' => '', 'size' => '32', 'icon_shape' => 'round', 'facebook' => '', 'twitter' => '', 'instagram' => '', 'pinterest' => '', 'behance' => '', 'flickr' => '', 'foursquare' => '', 'github' => '', 'gitlab' => '', 'linkedin' => '', 'linkedin_company' => '', 'medium' => '', 'mewe' => '', 'odnoklassniki' => '', 'snapchat' => '', 'telegram' => '', 'tumblr' => '', 'vimeo' => '', 'vkontakte' => '', 'xing' => '', 'youtube' => '', 'youtube_channel' => '', 'rss_feed' => '', 'before_widget_content' => '', 'after_widget_content' => '' );
 
 		foreach ( $instance as $key => $value ) {
 			if ( is_string( $value ) ) {
@@ -662,9 +678,6 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'github' ); ?>"><?php _e( 'Github URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'github' ); ?>" name="<?php echo $this->get_field_name( 'github' ); ?>" type="text" value="<?php echo $instance['github']; ?>" /><br/>
 			<span>https://github.com/ID</span><br/><br/>
-			<label for="<?php echo $this->get_field_id( 'google' ); ?>"><?php _e( 'Google+ URL:', 'sassy-social-share' ); ?></label> 
-			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'google' ); ?>" name="<?php echo $this->get_field_name( 'google' ); ?>" type="text" value="<?php echo $instance['google']; ?>" /><br/>
-			<span>https://plus.google.com/ID</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'linkedin' ); ?>"><?php _e( 'LinkedIn URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'linkedin' ); ?>" name="<?php echo $this->get_field_name( 'linkedin' ); ?>" type="text" value="<?php echo $instance['linkedin']; ?>" /><br/>
 			<span>https://www.linkedin.com/in/ID</span><br/><br/>
@@ -683,6 +696,9 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'snapchat' ); ?>"><?php _e( 'Snapchat URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'snapchat' ); ?>" name="<?php echo $this->get_field_name( 'snapchat' ); ?>" type="text" value="<?php echo $instance['snapchat']; ?>" /><br/>
 			<span>https://www.snapchat.com/add/ID</span><br/><br/>
+			<label for="<?php echo $this->get_field_id( 'telegram' ); ?>"><?php _e( 'Telegram URL:', 'sassy-social-share' ); ?></label> 
+			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'telegram' ); ?>" name="<?php echo $this->get_field_name( 'telegram' ); ?>" type="text" value="<?php echo $instance['telegram']; ?>" /><br/>
+			<span>https://t.me/username</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'tumblr' ); ?>"><?php _e( 'Tumblr URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'tumblr' ); ?>" name="<?php echo $this->get_field_name( 'tumblr' ); ?>" type="text" value="<?php echo $instance['tumblr']; ?>" /><br/>
 			<span>https://ID.tumblr.com</span><br/><br/>

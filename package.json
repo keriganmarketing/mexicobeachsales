@@ -38,6 +38,9 @@
     ],
     "devDependencies": {
         "purify-css": "^1.2.5",
-        "purifycss-webpack": "^0.7.0"
+        "purifycss-webpack": "^0.7.0",
+        "resolve-url-loader": "^2.3.2",
+        "sass": "^1.19.0",
+        "sass-loader": "^7.1.0"
     }
 }

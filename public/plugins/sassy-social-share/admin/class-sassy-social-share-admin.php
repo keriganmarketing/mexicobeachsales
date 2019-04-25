@@ -456,6 +456,18 @@ class Sassy_Social_Share_Admin {
 	}
 
 	/**
+	 * Save Facebook share count notification flag in DB
+	 *
+	 * @since    3.2.20
+	 */
+	public function fb_count_notification_read() {
+
+		update_option( 'heateor_sss_fb_count_notification_read', '1' );
+		die;
+	
+	}
+
+	/**
 	 * Show notices in admin area
 	 *
 	 * @since    2.4
@@ -464,8 +476,11 @@ class Sassy_Social_Share_Admin {
 		
 		if ( current_user_can( 'manage_options' ) ) {
 			if( get_transient( 'heateor-sss-admin-notice-on-activation' ) ) { ?>
-		        <div class="notice notice-success is-dismissible">
-		            <p><strong><?php printf( __( 'Thanks for installing Sassy Social Share plugin. Click <a href="%s">here</a> to configure plugin settings.', 'sassy-social-share' ), admin_url( 'admin.php?page=heateor-sss-options' ) ); ?></strong></p>
+		        <div class="sassy-social-share-message notice notice-success is-dismissible">
+		            <p><strong><?php printf( __( 'Thanks for installing Sassy Social Share plugin', 'sassy-social-share' ), 'http://support.heateor.com/configure-sassy-social-share' ); ?></strong></p>
+		            <p>
+						<a href="http://support.heateor.com/configure-sassy-social-share" target="_blank" class="button button-primary"><?php _e( 'Configure the Plugin', 'sassy-social-share' ); ?></a>
+					</p>
 		        </div> <?php
 		        /* Delete transient, only display this notice once. */
 		        delete_transient( 'heateor-sss-admin-notice-on-activation' );
@@ -478,6 +493,34 @@ class Sassy_Social_Share_Admin {
 					<p><?php _e( 'Update "Social Share myCRED Integration" add-on for maximum compatibility with current version of Sassy Social Share', 'sassy-social-share' ) ?></p>
 				</div>
 				<?php
+			}
+
+			if ( version_compare( '3.2.20', $this->version ) <= 0 ) {
+				if ( ( ( isset( $this->options['horizontal_re_providers'] ) && in_array( 'facebook', $this->options['horizontal_re_providers'] ) && ( isset( $this->options['horizontal_counts'] ) || isset( $this->options['horizontal_total_shares'] ) ) ) || ( isset( $this->options['vertical_re_providers'] ) && in_array( 'facebook', $this->options['vertical_re_providers'] ) && ( isset( $this->options['vertical_counts'] ) || isset( $this->options['vertical_total_shares'] ) ) ) ) && ! get_option( 'heateor_sss_fb_count_notification_read' ) ) {
+					?>
+					<script type="text/javascript">
+					function heateorSssFBCountNotificationRead(){
+						jQuery.ajax({
+							type: 'GET',
+							url: '<?php echo get_admin_url() ?>admin-ajax.php',
+							data: {
+								action: 'heateor_sss_fb_count_notification_read'
+							},
+							success: function(data, textStatus, XMLHttpRequest){
+								jQuery('#heateor_sss_fb_count_notification').fadeOut();
+							}
+						});
+					}
+					</script>
+					<div id="heateor_sss_fb_count_notification" class="update-nag">
+						<h3>Sassy Social Share</h3>
+						<p>
+							<?php _e( 'Save Facebook App ID and Secret keys in "Standard Interface" and/or "Floating Interface" section(s) to fix the issue with Facebook share count. After that, clear share counts cache from "Miscellaneous" section.', 'sassy-social-share' ); ?>
+							<p><input type="button" onclick="heateorSssFBCountNotificationRead()" style="margin-left: 5px;" class="button button-primary" value="<?php _e( 'Okay', 'sassy-social-share' ) ?>" /></p>
+						</p>
+					</div>
+					<?php
+				}
 			}
 
 			if ( version_compare( '3.2.1', $this->version ) <= 0 ) {
@@ -626,6 +669,25 @@ class Sassy_Social_Share_Admin {
 				heateor_sss_update_svg_css( $this->options['vertical_font_color_hover'], 'sassy-social-share-hover-svg-vertical' );
 			}
 			
+			if ( version_compare( '3.2.20', $current_version ) > 0 ) {
+				$this->options['fb_key'] = '';
+				$this->options['fb_secret'] = '';
+				$this->options['vertical_fb_key'] = '';
+				$this->options['vertical_fb_secret'] = '';
+				update_option( 'heateor_sss', $this->options );
+			}
+			
+			if ( version_compare( '3.2.18', $current_version ) > 0 ) {
+				$networks_to_remove = array( 'google_plus', 'google_plusone', 'google_plus_share' );
+				if ( $this->options['vertical_re_providers'] ) {
+					$this->options['vertical_re_providers'] = array_diff( $this->options['vertical_re_providers'], $networks_to_remove );
+				}
+				if ( $this->options['horizontal_re_providers'] ) {
+					$this->options['horizontal_re_providers'] = array_diff( $this->options['horizontal_re_providers'], $networks_to_remove );
+				}
+				update_option( 'heateor_sss', $this->options );
+			}
+
 			if ( version_compare( '3.2.6', $current_version ) > 0 ) {
 				$networks_to_remove = array( 'yahoo', 'Yahoo_Messenger', 'delicious', 'Polyvore', 'Oknotizie', 'Baidu', 'diHITT', 'Netlog', 'NewsVine', 'NUjij', 'Segnalo', 'Stumpedia', 'YouMob' );
 				if ( $this->options['vertical_re_providers'] ) {

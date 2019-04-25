@@ -28,7 +28,8 @@ $heateor_sss_options_to_delete = array(
 	'heateor_sss_custom_url_shares',
 	'heateor_sss_homepage_shares',
 	'widget_heateor_sss_sharing',
-	'widget_heateor_sss_floating_sharing'
+	'widget_heateor_sss_floating_sharing',
+	'heateor_sss_fb_access_token'
 );
 
 if ( isset( $heateor_sss_options['delete_options'] ) ) {

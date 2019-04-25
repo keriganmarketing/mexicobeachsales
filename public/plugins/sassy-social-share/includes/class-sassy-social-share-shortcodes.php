@@ -77,7 +77,7 @@ class Sassy_Social_Share_Shortcodes {
 			$target_url = esc_url( home_url() );
 			$post_id = 0;
 		} elseif ( ! is_singular() && $type == 'vertical' ) {
-			$target_url = html_entity_decode( esc_url( the_champ_get_http() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) );
+			$target_url = html_entity_decode( esc_url( $this->public_class_object->get_http_protocol() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) );
 			$post_id = 0;
 		} elseif ( isset( $_SERVER['QUERY_STRING'] ) && $_SERVER['QUERY_STRING'] ) {
 			$target_url = html_entity_decode( esc_url( $this->public_class_object->get_http_protocol() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) );
@@ -89,7 +89,15 @@ class Sassy_Social_Share_Shortcodes {
 			$target_url = html_entity_decode( esc_url( $this->public_class_object->get_http_protocol() . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"] ) );
 			$post_id = 0;
 		}
-		$target_url = $this->public_class_object->apply_target_share_url_filter( $target_url, $type, false );
+		$share_count_url = $target_url;
+		if ( $url == '' && is_singular() ) {
+			$share_count_url = get_permalink( $post -> ID );
+		}
+		$custom_post_url = $this->public_class_object->apply_target_share_url_filter( $target_url, $type, false );
+		if ( $custom_post_url != $target_url ) {
+			$target_url = $custom_post_url;
+			$share_count_url = $target_url;
+		}
 		// generate short url
 		$short_url = $this->public_class_object->get_short_url( $target_url, $post_id );
 		$alignment_offset = 0;
@@ -103,7 +111,7 @@ class Sassy_Social_Share_Shortcodes {
 		$this->public_class_object->share_count_transient_id = $this->public_class_object->get_share_count_transient_id( $target_url );
 		$cached_share_count = $this->public_class_object->get_cached_share_count( $this->public_class_object->share_count_transient_id );
 
-		$html = '<div class="heateor_sss_sharing_container heateor_sss_' . ( $type == 'standard' ? 'horizontal' : 'vertical' ) . '_sharing' . ( $type == 'floating' && isset( $this->options['hide_mobile_sharing'] ) ? ' heateor_sss_hide_sharing' : '' ) . ( $type == 'floating' && isset( $this->options['bottom_mobile_sharing'] ) ? ' heateor_sss_bottom_sharing' : '' ) . '" ss-offset="' . $alignment_offset . '" ' . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . $target_url . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1" ' );
+		$html = '<div class="heateor_sss_sharing_container heateor_sss_' . ( $type == 'standard' ? 'horizontal' : 'vertical' ) . '_sharing' . ( $type == 'floating' && isset( $this->options['hide_mobile_sharing'] ) ? ' heateor_sss_hide_sharing' : '' ) . ( $type == 'floating' && isset( $this->options['bottom_mobile_sharing'] ) ? ' heateor_sss_bottom_sharing' : '' ) . '" ss-offset="' . $alignment_offset . '" ' . ( $this->public_class_object->is_amp_page() ? "" : "heateor-sss-data-href='" . ( isset( $share_count_url ) && $share_count_url ? $share_count_url : $target_url ) . "'" ) . ( ( $cached_share_count === false || $this->public_class_object->is_amp_page() ) ? "" : 'heateor-sss-no-counts="1" ' );
 		$vertical_offsets = '';
 		if ( $type == 'floating' ) {
 			$vertical_offsets = $align . ': ' . $$align . 'px; top: ' . $top . 'px;width:' . ( ( $this->options['vertical_sharing_size'] ? $this->options['vertical_sharing_size'] : '35' ) + 4 ) . "px;";

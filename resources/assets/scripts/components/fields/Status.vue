@@ -24,9 +24,9 @@
 <script>
     export default {
         props: {
-            searchTerms: {
-                type: Array,
-                default: this.searchTerms
+            'searchTerms': {
+                type: Object,
+                default: () => {}
             }
         },
 

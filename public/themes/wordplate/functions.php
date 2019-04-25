@@ -77,7 +77,7 @@ function quicksearch_func( $atts ){
         </div>
         </form>
     </div> -->
-    <quick-search></quick-search>
+    <quick-search search-terms=""></quick-search>
     <?php
 	return ob_get_clean();
 }

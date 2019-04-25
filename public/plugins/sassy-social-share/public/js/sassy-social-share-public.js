@@ -1,7 +1,6 @@
 function heateorSssCallAjax(e){if(typeof jQuery!="undefined"){e()}else{heateorSssGetScript("https://code.jquery.com/jquery-latest.min.js",e)}}
-
 function heateorSssGetScript(e,t){var n=document.createElement("script");n.src=e;var r=document.getElementsByTagName("head")[0],i=false;n.onload=n.onreadystatechange=function(){if(!i&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){i=true;t();n.onload=n.onreadystatechange=null;r.removeChild(n)}};r.appendChild(n)}
-
+function heateorSssDetermineWhatsappShareAPI(a){if(a)return-1!=navigator.userAgent.indexOf("Mobi")?"api.whatsapp.com":"web.whatsapp.com";var p=jQuery("i.heateorSssWhatsappBackground a").attr("href");return void 0!==p?-1!=navigator.userAgent.indexOf("Mobi")?(jQuery("i.heateorSssWhatsappBackground a").attr("href",p.replace("web.whatsapp.com","api.whatsapp.com")),"api.whatsapp.com"):(jQuery("i.heateorSssWhatsappBackground a").attr("href",p.replace("api.whatsapp.com","web.whatsapp.com")),"web.whatsapp.com"):""}
 /**
  * Show more sharing services popup
  */
@@ -18,11 +17,6 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		title: "Twitter",
 		locale: "en-US",
 		redirect_url: "https://twitter.com/intent/tweet?text=" + (twitterTitle ? twitterTitle : postTitle) + " " + postUrl,
-	  },
-	  google: {
-		title: "Google plus",
-		locale: "en-US",
-		redirect_url: "https://plus.google.com/share?url=" + postUrl,
 	  },
 	  linkedin: {
 		title: "Linkedin",
@@ -159,7 +153,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 	  tumblr: {
 		title: "Tumblr",
 		locale: "en-US",
-		redirect_url: "http://www.tumblr.com/share?v=3&u=" + postUrl + "&t=" + postTitle,
+		redirect_url: "https://www.tumblr.com/widgets/share/tool?posttype=link&canonicalUrl=" + postUrl + "&title=" + postTitle + "&caption=",
 		bookmarklet_url: "javascript:var d=document,w=window,e=w.getSelection,k=d.getSelection,x=d.selection,s=(e?e():(k)?k():(x?x.createRange().text:0)),f='http://www.tumblr.com/share',l=d.location,e=encodeURIComponent,p='?v=3&u='+e(l.href) +'&t='+e(d.title) +'&s='+e(s),u=f+p;try{if(!/^(.*\\.)?tumblr[^.]*$/.test(l.host))throw(0);tstbklt();}catch(z){a =function(){if(!w.open(u,'t','toolbar=0,resizable=0,status=1,width=450,height=430'))l.href=u;};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else a();}void(0);"
 	  },
 	  vk: {
@@ -187,7 +181,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 	  whatsapp: {
 		title: "Whatsapp",
 		locale: "en-US",
-		bookmarklet_url: "https://" + heateorSssWhatsappShareAPI + ".whatsapp.com/send?text=" + postTitle + " " + postUrl,
+		bookmarklet_url: "https://" + heateorSssDetermineWhatsappShareAPI(true) + "/send?text=" + postTitle + " " + postUrl,
 	  },
 	  diigo: {
 		title: "Diigo",
@@ -383,7 +377,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 	  Line: {
 		title: "Line",
 		locale: "en-US",
-		redirect_url: "line://msg/text/" + postTitle + "! " + postUrl,
+		redirect_url: "https://social-plugins.line.me/lineit/share?url=" + postUrl,
 	  },
 	  LiveJournal: {
 		title: "LiveJournal",
@@ -770,6 +764,7 @@ function heateorSssCapitaliseFirstLetter(e) {
 }
 
 jQuery(function(){
+	var heateorSssWhatsappJSAPI = heateorSssDetermineWhatsappShareAPI(false);
 	var classes = ['heateor_sss_vertical_sharing', 'heateor_sss_vertical_counter'];
 	for(var i = 0; i < classes.length; i++){
 		if(jQuery('.' + classes[i]).length){

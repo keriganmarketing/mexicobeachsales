@@ -22,7 +22,7 @@
 
             @include('partials.footer')
         </div>
-        <portal-target name="modal"></portal-target>
+        @yield('modals')
     </div>
 
     {{ wp_footer() }}

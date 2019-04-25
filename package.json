@@ -29,6 +29,7 @@
         "vue-invisible-recaptcha": "^0.2.1",
         "vue-lazyload": "^1.2.6",
         "vue-masonry": "^0.11.7",
+        "vue-scrollto": "^2.15.0",
         "vue-template-compiler": "^2.6"
     },
     "browserslist": [

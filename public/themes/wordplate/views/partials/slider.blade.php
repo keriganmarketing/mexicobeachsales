@@ -1,5 +1,5 @@
 <div 
-    class="main-header-image shadow"
+    class="main-header-image"
     >
     <kma-slider class="slider-container"></kma-slider>
     <div class="slider-content">

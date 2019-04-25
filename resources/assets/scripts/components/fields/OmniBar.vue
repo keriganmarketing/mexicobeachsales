@@ -119,7 +119,7 @@ export default {
     display: block;
     width: 100%;
     border-width: 1px;
-    height: calc(3rem + 2px);
+    height: calc(2.5rem + 2px);
     padding: 0.375rem 1.75rem 0.375rem 0.75rem;
     background-color: #fff;
     cursor: pointer;

@@ -34,19 +34,19 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue:    #007bff;
+$blue:    #044b90;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
-$red:     #de0a29;
+$red:     #c41230;
 $orange:  #fd7e14;
 $yellow:  #ffc107;
 $green:   #28a745;
-$teal:    #20c997;
-$cyan:    #17a2b8;
+$teal:    #00adab;
+$cyan:    #0084c2;
 $brown:   #59332a;
 $forest:  #346c51;
-$navy:    #22282f;
+$navy:    #002447;
 $sand:    #f0eae7;
 
 $colors: ();
@@ -66,8 +66,8 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$primary:       $blue;
-$secondary:     $navy;
+$primary:       $cyan;
+$secondary:     $blue;
 $success:       $green;
 $info:          $teal;
 $warning:       $yellow;
@@ -249,12 +249,12 @@ $font-size-base:              1rem; // Assumes the browser default, typically `1
 $font-size-lg:                ($font-size-base * 1.25);
 $font-size-sm:                ($font-size-base * .875);
 
-$font-weight-light:           400;
+$font-weight-light:           300;
 $font-weight-normal:          400;
-$font-weight-medium:          400;
+$font-weight-medium:          500;
 $font-weight-bold:            600;
 $font-weight-bolder:          800;
-$font-weight-black:           800;
+$font-weight-black:           900;
                    
 $font-weight-base:            $font-weight-normal;
 $line-height-base:            1.5;
@@ -342,7 +342,7 @@ $table-caption-color:         $text-muted;
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
-$input-btn-padding-y:         .75rem;
+$input-btn-padding-y:         .5rem;
 $input-btn-padding-x:         1rem;
 $input-btn-line-height:       $line-height-base;
 

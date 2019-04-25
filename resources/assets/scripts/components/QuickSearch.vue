@@ -1,10 +1,13 @@
 <template>
-    <div class="quick-search w-100 p-4 d-inline-block text-white">
+    <div class="quick-search p-4 d-inline-block text-white shadow">
+        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit line1">Mexico Beach</fit-text>
+        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit">St. Joe Beach & WindMark</fit-text>
+        <fit-text :min=".5" :max="10" class="m-0 font-weight-bold text-info fit">Real Estate</fit-text>
         <form action="property-search">
         <input name="q" value="search" type="hidden" >
         <input type="hidden" name="sort" value="list_date|desc" >
         
-        <div class="row d-flex align-items-center">
+        <div class="row d-flex align-items-center pt-3 px-1">
             <div class="col-12 col-sm mb-2 flex-grow-1">
                 <omni-bar
                     v-model="omni"
@@ -68,7 +71,12 @@
     }
 </script>
 <style lang="scss" scoped>
-.btn {
-    font-size: .9rem;
+.fit {
+    text-transform: uppercase;
+    line-height: 1em;
+
+    &.line1 {
+        line-height: 1.2em;
+    }
 }
 </style>

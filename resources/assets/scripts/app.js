@@ -28,6 +28,21 @@ Vue.use(VueCarousel);
 import VueLazyload from 'vue-lazyload';
 Vue.use(VueLazyload)
 
+import vueScrollto from 'vue-scrollto'
+Vue.use(vueScrollto, {
+    container: "body",
+    duration: 1000,
+    easing: "ease",
+    offset: -120,
+    force: true,
+    cancelable: true,
+    onStart: false,
+    onDone: false,
+    onCancel: false,
+    x: false,
+    y: true
+})
+
 // or with options
 Vue.use(VueLazyload, {
   preLoad: 1.3,
@@ -52,7 +67,7 @@ const app = new Vue({
         scrollPosition: 0,
         footerStuck: false,
         mobileMenuOpen: false,
-        galleryIsOpen: false
+        galleryIsOpen: ''
     },
 
     methods: {
@@ -63,11 +78,12 @@ const app = new Vue({
         toggleMenu() { 
             this.mobileMenuOpen = ! this.mobileMenuOpen;
         },
-        openGallery() {
-            this.galleryIsOpen = true;
+        openGallery(payload) {
+            console.info(payload);
+            this.galleryIsOpen = payload[0];
         },
         closeGallery() {
-            this.galleryIsOpen = false;
+            this.galleryIsOpen = '';
         }
     },
 

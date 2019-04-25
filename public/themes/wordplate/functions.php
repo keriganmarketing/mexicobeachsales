@@ -58,26 +58,13 @@ add_filter('bladerunner/cache/path', function () {
 function quicksearch_func( $atts ){
     ob_start();
     ?>
-    <!-- <div class="quick-search p-4 p-sm-0 p-md-4 d-inline-block text-white">
-        <form action="property-search">
-        <input name="q" value="search" type="hidden" >
-        <div class="row align-items-center no-gutters">
-            <div class="col-12 col-md-auto mb-2 pr-md-0">
-                <label class="sr-only" for="property-type-field">Property Type</label>
-                <property-type></property-type>
-            </div>
-            <div class="d-none d-md-block col-auto mb-2 px-4"><span class="text-shadow">IN</span></div>
-            <div class="col-9 col-md-auto mb-2 pr-4">
-                <label class="sr-only" for="area-field">Area</label>
-                <area-field></area-field>
-            </div>
-            <div class="col-3 col-md-auto mb-2">
-                <button class="btn btn-block btn-primary">GO</button>
-            </div>
-        </div>
-        </form>
-    </div> -->
     <quick-search search-terms=""></quick-search>
+
+    <div class="d-flex feat-buttons">
+        <a class="btn top-homes btn-opaque flex-grow-1 font-weight-black" href="/top-25-residential-buys/" >Top 25<br><span class="font-weight-light">Homes</span></a>
+        <a class="btn top-lots btn-opaque flex-grow-1 font-weight-black" href="/top-15-lots/" >Top 15<br><span class="font-weight-light">Lots</span></a>
+        <a class="btn storm-deals flex-grow-1 font-weight-black" href="https://www.98realestategroup.com/properties/michael/" target="_blank"><span class="font-weight-light">Storm</span><br>Deals</a>
+    </div>
     <?php
 	return ob_get_clean();
 }

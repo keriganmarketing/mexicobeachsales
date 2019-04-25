@@ -43,6 +43,7 @@
                     </div>
                     
                     <photo-gallery 
+                        mls-account="{{ $listing->mls_account }}"
                         @closeviewer="closeGallery"
                         @openviewer="openGallery"
                         :viewer-state="galleryIsOpen"
@@ -76,4 +77,8 @@
 @else
     @include('pages.404')
 @endif
+@endsection
+
+@section('modals')
+    <portal-target name="modal-{{ $listing->mls_account }}"></portal-target>
 @endsection

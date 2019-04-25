@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row no-gutters">
-            <div :class="itemClass" v-for="(photo, index) in photos" v-bind:key="photo.id" >
+            <div :class="itemClass" v-for="(photo, index) in photos.slice(0, dataLimit)" v-bind:key="photo.id" >
                 <div class="photo-tile has-text-centered shadow">
                     <div class="embed-responsive embed-responsive-16by9">
                         <img @click="openViewer(index)" class="embed-responsive-item cursor-pointer" style="height:auto;" :id="'photo-' + photo.id" :src="photo.url" :alt="photo.name" >
@@ -9,8 +9,8 @@
                 </div>
             </div>
         </div>
-        <portal to="modal" >
-            <div class="modal-frame"  v-if="galleryIsOpen" >
+        <portal :to="'modal-' + mlsAccount" >
+            <div class="modal-frame" v-if="galleryIsOpen == mlsAccount" >
                 <div class="modal-container">
                     <div v-if="photoOpen" class="photo-container" style="height: 80vh; overflow:hidden; padding:1rem;" @click="closeViewer()" >
                         <img :src="activePhoto.url" :alt="activePhoto.name" style="max-width:100%;max-height:100%;" />
@@ -49,6 +49,10 @@
 <script>
     export default {
         props: {
+            mlsAccount: {
+                type: Number,
+                default: 123456
+            },
             dataPhotos: {
                 type: Array,
                 default: () => []
@@ -62,8 +66,12 @@
                 default: ''
             },
             viewerState: {
-                type: Boolean,
-                default: false
+                type: String,
+                default: ''
+            },
+            limit: {
+                type: Number,
+                default: null
             }
         },
         data () {
@@ -75,7 +83,8 @@
                 numPhotos: 0,
                 hasVirtualTour: false,
                 tourOpen: false,
-                photoOpen: true
+                photoOpen: true,
+                dataLimit: 0
             }
         },
         mounted () {
@@ -88,9 +97,11 @@
                 this.hasVirtualTour = true;
             }
 
-            if(viewerState == true){
+            if(this.viewerState == this.mlsAccount){
                 this.openViewer(0);
             }
+
+            this.dataLimit = (this.limit ? this.limit : this.numPhotos);
             
         },
         computed: {
@@ -106,7 +117,9 @@
 
         methods: {
             openViewer(index){
-                this.$emit('openviewer');
+                this.$emit('openviewer',[
+                    this.mlsAccount
+                ]);
 
                 this.activePhoto = this.photos[index];
                 this.activePhoto.index = index;

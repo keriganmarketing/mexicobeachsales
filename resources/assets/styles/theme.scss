@@ -45,21 +45,6 @@ body {
         .site-wrapper {
             display: flex;
             flex-direction: column;
-
-            .headshot {
-                img {
-                    width: 180px;
-                    height: 180px;
-                    margin-top:-90px;
-                    position: relative;
-
-                    @media screen and (min-width: 768px){
-                        width: 220px;
-                        height: 220px;
-                        margin-top:-110px;
-                    }
-                }
-            }
             
             main {
                 background-color: $white;
@@ -81,11 +66,15 @@ body {
     z-index: 10;
     position: fixed;
     width: 100%;
-    background-color: $white;
-    box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#002447+0,7db9e8+100&0.7+0,0+100 */
+background: -moz-linear-gradient(top, rgba(0,36,71,0.7) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(0,36,71,0.7) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(0,36,71,0.7) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3002447', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
 
     .logo {
-        color: $dark;
+        color: $white;
         justify-content: center;
         padding: 1.5rem 0;
         margin: 0 auto;
@@ -98,18 +87,20 @@ body {
 
         @media screen and (min-width: 567px){
             justify-content: flex-end;
+            padding-bottom: 0rem;
+
         }
 
         a {
             display: inline-block;
             padding: .5rem;
             margin: 0 .5rem 0 0;
-            background-color: $primary;
+            background-color: $info;
             font-size: 1rem;
             color: $white;
 
             @media screen and (min-width: 993px) {
-                color: $primary;
+                color: $info;
                 background-color: transparent;
             }
         }
@@ -121,13 +112,13 @@ body {
 
         .nav-item {
             a.nav-link {
-                color: $dark;
+                color: $white;
                 padding: .4rem .75rem;
             }
 
             &:hover {
                 a.nav-link {
-                    color: $primary;
+                    color: $light;
                 }
             }
 
@@ -147,8 +138,8 @@ body {
                     padding: .5rem 1rem;
     
                     &:hover {
-                        color: $primary;
                         background-color: $light !important;
+                        
                     }
                 }
             }
@@ -177,6 +168,9 @@ ul.navbar-nav {
 .mobile-menu-open,
 .scrolling {
     .top {
+        background-color: $dark !important;
+        box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+
         .topnav {
             list-style: none;
             display: flex;
@@ -216,7 +210,28 @@ ul.navbar-nav {
 
 
 .quick-search {
-    text-align: left;
+    width:100%;
+    margin: auto;
+    text-align: center;
+    background: rgba(0,36,71,.8);
+    border-bottom: .5rem solid $red;
+
+    @media screen and (min-width: 523px){
+        width: 395px;
+        margin-top:7rem;
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 667px){
+
+    }
+
+    @media screen and (min-width: 678px){
+        width: 523px;
+    }
+
+    @media screen and (min-width: 992px){
+        padding: 3rem 2.9rem 2.5rem !important;
+    }
 
     select {
         min-width: 210px;
@@ -230,6 +245,65 @@ ul.navbar-nav {
     .text-shadow {
         text-shadow: 0 0 1rem rgba(0,0,0,.75);
     }
+}
+
+.feat-buttons {
+    width:100%;
+
+    
+
+    @media screen and (min-width: 668px){
+        width: 100%;
+        margin-top: 12rem;
+    }
+
+    @media screen and (min-width: 992px){
+        width: 872px;
+        margin-top: 6rem;
+    }
+
+    .btn { 
+        color: #FFF; 
+        box-shadow: 0 0 1rem rgba(0,0,0,.1); 
+        text-shadow: 1px 1px 0 rgba(0,0,0,.25);
+        line-height: 1em; 
+        padding: .75rem;
+        font-weight: 800;
+
+        @media screen and (min-width: 523px){
+            padding: 1.5rem;
+        }
+
+        @media screen and (min-width: 992px){
+            font-size: 1.5em;
+        }
+
+        @media screen and (min-width: 1024px){
+            font-size: 2em;
+        }
+
+        span { font-size: .95em; }
+        &.top-homes { background-color: rgba(4,75,144,.8); }
+        &.top-lots { background-color: rgba(0,132,194,.8); }
+        &.storm-deals { background-color: rgba(0,173,171,.8); }
+    }
+
+    
+}
+
+.down-arrow {
+    background: #FFF;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    z-index: 0;
+    position: relative;
+    font-size: 1.5em;
+    padding-top: .25rem;
+    margin: -30px auto 0;
+    cursor: pointer;
 }
 
 // Body Content
@@ -255,6 +329,12 @@ main {
         }
 
         &.front {
+            padding-top: 0;
+
+            @media (min-width: 768px){
+                padding-top: 2rem;
+            }
+
             p {
                 margin: 0;
                 padding: .5rem 0 1rem; 
@@ -310,20 +390,12 @@ main {
 .slider-container,
 .main-header-image {
     position: relative;
-    min-height: 450px;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    @media screen and (min-width: 567px){
-        min-height: 420px;
-    }
-
-    @media screen and (min-width: 768px){
-        min-height: 480px;
-    }
 
     .overlay {
         position: absolute;
@@ -338,38 +410,8 @@ main {
         z-index: 2;
         justify-content: center;
         text-align: center;
-        width: 600px;
-        max-width: 100%;
+        width: 100%;
         margin: auto;
-
-        h2 {
-            font-family: $font-family-sans-serif !important;
-            font-weight: 700;
-            color: $white;
-            font-size: 1.3rem;
-            line-height: 2rem;
-            margin: 0;
-            padding: 5rem 0 0;
-            text-shadow: 0 0 1rem rgba(0,0,0,.4);
-
-            @media screen and (min-width: 375px){
-                font-size: 1.6rem;
-            }
-
-            @media screen and (min-width: 567px){
-                padding: 1rem 0 .25rem;
-                font-size: 2.5rem;
-                line-height: 2.5rem;
-            }
-
-            @media screen and (min-width: 667px){
-                padding: 1.5rem 0 .5rem;
-            }
-
-            @media screen and (min-width: 768px){
-                line-height: 2rem;
-            }
-        }
     }
 }
 
@@ -402,84 +444,6 @@ main {
     }
 }
 
-.featured-listings-section {
-    box-shadow: inset 0 10px 15px rgba(0,0,0,.25);
-}
-
-// Feature Box Section
-.feature-box-section {
-    @media (min-width: 567px){
-        padding: 2rem 1rem;
-    }
-
-    .feature-box {
-        padding: 2rem;
-        background-size: cover;
-        background-position: center;
-        overflow: hidden;
-
-        @media (min-width: 768px){
-            padding: 3rem;
-        }
-
-        .box-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-
-            @media (min-width: 768px){
-                top: 2rem;
-                left: 2rem;
-                right: 2rem;
-                bottom: 2rem;
-            }
-        }
-
-        h2, h3 {
-            margin-bottom: 1rem;
-            text-shadow: 0 0 .5rem rgba(0,0,0,.5);
-
-            @media (min-width: 768px){
-                margin-bottom: 2rem;
-                font-size: 2em;
-            }
-            @media (min-width: 992px){
-                font-size: 2.4em;
-            }
-        }
-
-        p {
-            margin-bottom: 1rem;
-
-            @media (min-width: 768px){
-                margin-bottom: 2rem;
-            }
-
-        }
-
-        .btn {
-            background-color: rgba(89,51,42,.6);
-        }
-    }
-
-    .box-container {
-        padding: 0;
-        @media (min-width: 567px){
-            padding: 1rem ;
-        }
-        @media (min-width: 768px){
-            padding: 2rem;
-        }
-    }
-}
 
 article h2,
 .short-underline {

@@ -50,7 +50,8 @@ class ThemeControl
 
         new KeriganSolutions\KMARealtor\RealtorDashboard();
         new KeriganSolutions\KMARealtor\RealtorListings();
-        (new KeriganSolutions\KMARealtor\FeaturedListings())->use();
+        //(new KeriganSolutions\KMARealtor\FeaturedListings())->use();
+        (new KeriganSolutions\KMARealtor\FeaturedLists())->use();
         (new KeriganSolutions\KMARealtor\Listing())->use();
         $this->enableContactInfo();
         

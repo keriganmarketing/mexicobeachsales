@@ -32,7 +32,7 @@
                             virtual-tour='{{ $listing->virtual_tour }}' 
                             :data-photos='{{ json_encode($listing->media_objects->data) }}'
                             item-class="col-sm-6"
-                            :limit="4" ></photo-gallery>
+                            :limit="5" ></photo-gallery>
                         </div>
                         <div class="col-md-8">
 

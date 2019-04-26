@@ -42020,7 +42020,10 @@ var render = function() {
             "a",
             {
               class: "nav-link " + navitem.classes,
-              attrs: { href: navitem.url }
+              attrs: {
+                href: navitem.url,
+                target: navitem.target !== "" ? navitem.target : "_self"
+              }
             },
             [_vm._v(_vm._s(navitem.title))]
           ),
@@ -42035,7 +42038,11 @@ var render = function() {
                       "a",
                       {
                         class: "dropdown-item " + child.classes,
-                        attrs: { href: child.url }
+                        attrs: {
+                          href: child.url,
+                          target:
+                            navitem.target !== "" ? navitem.target : "_self"
+                        }
                       },
                       [_vm._v(_vm._s(child.title))]
                     )
@@ -42366,7 +42373,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row no-gutters" },
-        _vm._l(_vm.photos.slice(0, _vm.dataLimit), function(photo, index) {
+        _vm._l(_vm.photos.slice(1, _vm.dataLimit), function(photo, index) {
           return _c("div", { key: photo.id, class: _vm.itemClass }, [
             _c("div", { staticClass: "photo-tile has-text-centered shadow" }, [
               _c(
@@ -42383,7 +42390,7 @@ var render = function() {
                     },
                     on: {
                       click: function($event) {
-                        return _vm.openViewer(index)
+                        return _vm.openViewer(index + 1)
                       }
                     }
                   })

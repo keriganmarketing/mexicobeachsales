@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="row no-gutters">
-            <div :class="itemClass" v-for="(photo, index) in photos.slice(0, dataLimit)" v-bind:key="photo.id" >
+            <div :class="itemClass" v-for="(photo, index) in photos.slice(1, dataLimit)" v-bind:key="photo.id" >
                 <div class="photo-tile has-text-centered shadow">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <img @click="openViewer(index)" class="embed-responsive-item cursor-pointer" style="height:auto;" :id="'photo-' + photo.id" :src="photo.url" :alt="photo.name" >
+                        <img @click="openViewer(index +1)" class="embed-responsive-item cursor-pointer" style="height:auto;" :id="'photo-' + photo.id" :src="photo.url" :alt="photo.name" >
                     </div>
                 </div>
             </div>

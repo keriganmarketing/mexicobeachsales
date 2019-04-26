@@ -5665,9 +5665,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 
@@ -42650,7 +42647,7 @@ var render = function() {
   return _c("div", [
     _c("form", [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "col-md-6" }, [
           _c("div", { staticClass: "form-group" }, [
             _c(
               "label",
@@ -42684,10 +42681,8 @@ var render = function() {
                 }
               }
             })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c(
               "label",
@@ -42721,10 +42716,8 @@ var render = function() {
                 }
               }
             })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
+          ]),
+          _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c(
               "label",
@@ -42761,46 +42754,44 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "sr-only", attrs: { for: "message-field" } },
-              [_vm._v("Message")]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.comments,
-                  expression: "form.comments"
-                }
-              ],
-              staticClass: "form-control border-0",
-              attrs: { id: "message-field", placeholder: "Message" },
-              domProps: { value: _vm.form.comments },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "comments", $event.target.value)
-                }
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-12" },
+          { staticClass: "col-md-6" },
           [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "sr-only", attrs: { for: "message-field" } },
+                [_vm._v("Message")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.comments,
+                    expression: "form.comments"
+                  }
+                ],
+                staticClass: "form-control border-0",
+                attrs: { id: "message-field", placeholder: "Message" },
+                domProps: { value: _vm.form.comments },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "comments", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
             _c(
               "invisible-recaptcha",
               {
-                staticClass: "btn btn-primary",
+                staticClass: "btn btn-primary btn-block",
                 attrs: {
                   sitekey: "6LcirZUUAAAAAP0438I86dmC5E4Ch-6nlo41_9RT",
                   callback: _vm.formSubmitted,

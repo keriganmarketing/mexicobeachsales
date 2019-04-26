@@ -2900,7 +2900,7 @@ h6,
 
 .display-1 {
   font-size: 6rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -2912,7 +2912,7 @@ h6,
 
 .display-2 {
   font-size: 5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -2924,7 +2924,7 @@ h6,
 
 .display-3 {
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -2936,7 +2936,7 @@ h6,
 
 .display-4 {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
 }
 
@@ -13865,14 +13865,8 @@ main article.front p .btn {
 }
 
 main article h1 {
-  color: #555555;
-  font-weight: normal;
-  margin: 0 0 1rem;
-}
-
-main article h1 strong {
   color: #0084c2;
-  display: block;
+  margin: 0 0 1rem;
 }
 
 main article h2 {
@@ -14027,6 +14021,7 @@ article h2::after,
 footer {
   color: #FFF;
   border-top: 5px solid #0084c2;
+  padding-top: 4rem;
 }
 
 footer a {
@@ -14076,8 +14071,8 @@ footer .footer-menu .nav-item a:hover {
     padding: 1rem;
   }
 
-  footer .contact-form .form-group {
-    padding-bottom: .75rem;
+  footer .contact-form #message-field {
+    height: 100px;
   }
 }
 

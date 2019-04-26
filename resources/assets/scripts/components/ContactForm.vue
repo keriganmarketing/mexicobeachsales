@@ -2,7 +2,7 @@
     <div>
         <form>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="sr-only" for="name-field">Name</label>
                         <input
@@ -14,8 +14,6 @@
                             required
                         >
                     </div>
-                </div>
-                <div class="col-md-4">
                     <div class="form-group">
                         <label class="sr-only" for="email-field">Email Address</label>
                         <input
@@ -27,8 +25,6 @@
                             required
                         >
                     </div>
-                </div>
-                <div class="col-md-4">
                     <div class="form-group">
                         <label class="sr-only" for="phone-number-field">Phone Number</label>
                         <input
@@ -40,8 +36,10 @@
                             required
                         >
                     </div>
+
+
                 </div>
-                <div class="col-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label class="sr-only" for="message-field">Message</label>
                         <textarea
@@ -52,13 +50,12 @@
                         >
                         </textarea>
                     </div>
-                </div>
-                <div class="col-12">
                     <invisible-recaptcha sitekey="6LcirZUUAAAAAP0438I86dmC5E4Ch-6nlo41_9RT" :callback="formSubmitted"
-                        class="btn btn-primary" type="submit" id="contact-form-submit-button" >
+                        class="btn btn-primary btn-block" type="submit" id="contact-form-submit-button" >
                         Send Message &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </invisible-recaptcha>
                 </div>
+
             </div>
         </form>
     </div>

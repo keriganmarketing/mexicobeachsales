@@ -346,14 +346,8 @@ main {
         }
 
         h1 {
-            color: $gray-600;
-            font-weight: normal;
+            color: $primary;
             margin: 0 0 1rem;
-
-            strong { 
-                color: $primary;
-                display: block;
-            }
         }
 
         h2 {
@@ -499,6 +493,7 @@ article h2,
 footer {
     color: #FFF;
     border-top: 5px solid $primary;
+    padding-top: 4rem;
 
     a {
         color: #FFF;
@@ -545,8 +540,8 @@ footer {
         @media (min-width: 768px){
             padding: 1rem;
 
-            .form-group {
-                padding-bottom: .75rem;
+            #message-field {
+                height: 100px;
             }
         }
     }

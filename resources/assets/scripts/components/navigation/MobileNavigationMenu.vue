@@ -97,7 +97,6 @@
         border: 0;
         display: block;
         padding: .5rem 1rem;
-        background-color: #1aa37b;
     }
 }
 </style>

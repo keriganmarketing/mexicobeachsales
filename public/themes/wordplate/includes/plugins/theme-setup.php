@@ -142,3 +142,10 @@ function website_menu( $menuID ){
 
     return json_encode($output);
 }
+
+function custom_admin_css() {
+    echo '<style type="text/css">
+    .wp-block { max-width: 1000px; }
+    </style>';
+    }
+add_action('admin_head', 'custom_admin_css');

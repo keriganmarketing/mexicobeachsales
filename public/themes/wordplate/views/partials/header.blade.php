@@ -51,7 +51,7 @@
 <div v-if="mobileMenuOpen" class="mobile-menu align-items-center" ref="mobileMenuContainer" v-bind:class="{ 'open': this.mobileMenuOpen }" >
     <mobile-menu 
         v-bind:mobile-nav="{{ website_menu('mobile-navigation') }}" 
-        class="navbar-nav m-auto" 
+        class="navbar-nav w-100 m-auto" 
         id="mobile-navigation-menu" 
     ></mobile-menu>
 </div>

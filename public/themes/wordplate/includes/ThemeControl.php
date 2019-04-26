@@ -146,6 +146,12 @@ class ThemeControl
             'type'   => 'text',
             'parent' => 'group_contact_info',
         ])->addField([
+            'key'    => 'area_excludes',
+            'label'  => 'Area Exclusions',
+            'name'   => 'area_excludes',
+            'type'   => 'text',
+            'parent' => 'group_contact_info',
+        ])->addField([
             'key'    => 'broker_logo',
             'label'  => 'Broker Logo',
             'name'   => 'broker_logo',

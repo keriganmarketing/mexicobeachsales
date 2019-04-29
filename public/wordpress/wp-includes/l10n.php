@@ -944,9 +944,8 @@ function load_script_textdomain( $handle, $domain = 'default', $path = null ) {
 	$content_url = wp_parse_url( content_url() );
 	$site_url    = wp_parse_url( site_url() );
 
+	// If the host is the same or it's a relative URL.
 	if(isset($src_url['path']) && isset($content_url['path'])){
-
-		// If the host is the same or it's a relative URL.
 		if (
 			strpos( $src_url['path'], $content_url['path'] ) === 0 &&
 			( ! isset( $src_url['host'] ) || $src_url['host'] === $content_url['host'] )

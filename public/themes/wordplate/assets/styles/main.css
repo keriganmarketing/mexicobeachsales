@@ -2474,7 +2474,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Montserrat", sans-serif;
+  --font-family-sans-serif: inherit;
   --font-family-monospace: "Liberation Mono", "Courier New", monospace;
 }
 
@@ -2506,7 +2506,7 @@ section {
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -8988,7 +8988,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -9112,7 +9112,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -13487,11 +13487,12 @@ html {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
 }
 
 html .wp-block-button__link,
 html .btn {
-  font-family: "Montserrat", sans-serif;
+  font-family: inherit;
   text-transform: uppercase;
   font-size: .9em;
   line-height: 1.5rem;

@@ -18,7 +18,7 @@
 
                     @foreach($listings as $listing)
                     <hr>
-                    <h2 class="display-3 py-4">#{{ $listing->menu_order }}: {{ $listing->post_title }}</h2>
+                    <h2 class="display-3 py-4">#{{ $listing->menu_order }}: {{ $listing->post_title }} <small style="font-size:16px;" class="badge badge-secondary">MLS# {{ $listing->mls_account }}</small></h2>
 
                     <div class="row mb-5">
                         <div class="col-md-4">
@@ -53,8 +53,8 @@
                             </div>
 
                             <div class="card">
-                                <table class="table m-0">
-                                <tr><td>MLS Number</td><td>{{ $listing->mls_account }}</td></tr>
+                                <table class="table table-striped m-0">
+                                <tr><td>Price</td><td>${{ number_format($listing->price) }}</td></tr>
                                 @if($listing->list_date != '')
                                     <tr><td>List Date</td><td>{{ date('M d, Y', strtotime($listing->list_date)) }}</td></tr>
                                 @endif

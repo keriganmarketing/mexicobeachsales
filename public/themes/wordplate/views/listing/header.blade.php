@@ -4,7 +4,7 @@
 
     <p class="property-type text-muted mb-2">{{ $listing->prop_type }}</p>
 
-    @if($listing->status == 'Sold')
+    @if($listing->status == 'Sold/Closed')
         <p>Sold on {{ date( 'M j, Y', strtotime( $listing->sold_on )) }} for <strong>${{ number_format($listing->sold_for) }}</strong></p>
     @else
     @if ( $listing->original_list_price > $listing->price && $listing->status == 'Active' && $listing->original_list_price != 0)

@@ -19,7 +19,7 @@
     ></listing-photo>
 
     <div class="p-4 text-center text-dark flex-grow-1">
-        <p>{{ $miniListing->full_address }}<br>
+        <p>{{ $miniListing->street_num }} {{ $miniListing->street_name }} {{ $miniListing->unit_num }}<br>
            {{ $miniListing->city . ', ' . $miniListing->state }}</p>
         <p class="property-type text-muted">{{ $miniListing->prop_type }}</p>
 

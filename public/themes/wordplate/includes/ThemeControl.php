@@ -53,6 +53,8 @@ class ThemeControl
         //(new KeriganSolutions\KMARealtor\FeaturedListings())->use();
         (new KeriganSolutions\KMARealtor\FeaturedLists())->use();
         (new KeriganSolutions\KMARealtor\Listing())->use();
+        (new KeriganSolutions\KMARealtor\CustomSearch())->use();
+        
         $this->enableContactInfo();
         
         if (get_theme_mod('enable_team')){

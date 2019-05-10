@@ -21,12 +21,12 @@
             <div class="container">
                 <div class="row justify-content-center ">
                     @if($headshot != '')
-                        <div class="col-6 col-sm-4 col-lg-3 " >
+                        <div class="col-6 col-sm-4 col-lg-3 mb-5 mb-sm-0" >
                             <img src="{{ $headshot }}" class="img-fluid" alt="{{ get_field('agent_name','option') }}">
                         </div>
                     @endif
                     <div class="col-sm-8 col-lg-9">
-                        <article class="front">
+                        <article class="front text-center text-sm-left">
                             <h1>{{ the_title() }}</h1>
                             
                             {{ the_content() }}

@@ -11,4 +11,5 @@ package-lock.json
 Vagrantfile
 composer.lock
 public/uploads/
+public/plugins/
 composer.lock

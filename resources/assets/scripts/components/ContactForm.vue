@@ -50,7 +50,7 @@
                         >
                         </textarea>
                     </div>
-                    <invisible-recaptcha sitekey="6LcirZUUAAAAAP0438I86dmC5E4Ch-6nlo41_9RT" :callback="formSubmitted"
+                    <invisible-recaptcha sitekey="6Ldk36IUAAAAACBv_0BxHtPEtetgd1_HGYLJBtBu" :callback="formSubmitted"
                         class="btn btn-primary btn-block" type="submit" id="contact-form-submit-button" >
                         Send Message &nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </invisible-recaptcha>

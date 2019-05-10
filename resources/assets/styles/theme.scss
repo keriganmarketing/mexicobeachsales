@@ -370,6 +370,7 @@ main {
 
         .uagb-buttons__wrap {
             justify-content: center !important;
+            align-items: center !important;
 
             @media screen and (min-width: 768px){
                 justify-content: flex-start !important;

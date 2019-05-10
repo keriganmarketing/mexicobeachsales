@@ -35,6 +35,11 @@ html {
     .pointer {
         cursor: pointer;
     }
+
+    .site-wrapper.mobile-menu-open {
+        height: 100vh;
+        overflow: hidden;
+    }
 }
 
 body {
@@ -181,7 +186,7 @@ ul.navbar-nav {
     }
 
     .mobile-menu {
-        padding-top: 135px !important;
+        padding-top: 170px !important;
         background: $primary;
         text-align: center;
 

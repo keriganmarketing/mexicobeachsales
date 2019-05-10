@@ -19,9 +19,9 @@
         <a class="down-arrow" v-scroll-to="'#main'" ><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
         <main role="main" id="main" class="py-5">
             <div class="container">
-                <div class="row justify-content-center ">
+                <div class="row justify-content-center align-items-center">
                     @if($headshot != '')
-                        <div class="col-6 col-sm-4 col-lg-3 mb-5 mb-sm-0" >
+                        <div class="col-6 col-sm-4 col-lg-3 mb-4" >
                             <img src="{{ $headshot }}" class="img-fluid" alt="{{ get_field('agent_name','option') }}">
                         </div>
                     @endif

@@ -62,7 +62,7 @@
         height: 100vh;
         width: 100%;
         z-index: 9;
-        padding: 3rem 2rem 2rem;
+        padding: 3rem 2rem 4rem;
         color: #FFF;
         position: fixed;
         right: 0;

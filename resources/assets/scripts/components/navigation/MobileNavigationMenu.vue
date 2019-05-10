@@ -62,11 +62,12 @@
         height: 100vh;
         width: 100%;
         z-index: 9;
-        padding: 2rem 2rem 2rem;
+        padding: 3rem 2rem 2rem;
         color: #FFF;
         position: fixed;
         right: 0;
         text-align: center;
+        overflow-y: scroll;
 
         @media screen and (min-width: 576px){
             width: auto;

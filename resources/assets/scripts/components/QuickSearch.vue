@@ -1,9 +1,9 @@
 <template>
     <div class="quick-search p-4 d-inline-block text-white shadow">
         <div>
-        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit line1">Mexico Beach</fit-text>
-        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit">St. Joe Beach &amp; WindMark</fit-text>
-        <fit-text :min=".5" :max="10" class="m-0 font-weight-bold text-info fit">Real Estate</fit-text>
+        <p class="m-0 font-weight-light fit line1">Mexico Beach</p>
+        <p class="m-0 font-weight-light fit">St. Joe Beach &amp; WindMark</p>
+        <p class="m-0 font-weight-bold text-info fit">Real Estate</p>
         </div>
         <form action="property-search">
         <input name="q" value="search" type="hidden" >

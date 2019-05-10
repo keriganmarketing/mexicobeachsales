@@ -236,10 +236,19 @@ ul.navbar-nav {
 
     .fit {
         letter-spacing: 1px;
-        font-size: 1.05em;
+        font-size: .9em;
 
-        &.line1 { font-size: 2em; }
-        &.text-info { font-size: 2.35em; }
+        &.line1 { font-size: 1.8em; }
+        &.text-info { font-size: 2.1em; }
+    }
+
+    @media screen and (min-width: 375px){
+        .fit {
+            font-size: 1.05em;
+    
+            &.line1 { font-size: 2em; }
+            &.text-info { font-size: 2.35em; }
+        }
     }
 
     @media screen and (min-width: 523px){

@@ -368,6 +368,14 @@ main {
             padding: 2rem 0 3rem;
         }
 
+        .uagb-buttons__wrap {
+            justify-content: center !important;
+
+            @media screen and (min-width: 768px){
+                justify-content: flex-start !important;
+            }
+        }
+
         header {
             padding-top: 3rem;
             margin-bottom: 1rem;

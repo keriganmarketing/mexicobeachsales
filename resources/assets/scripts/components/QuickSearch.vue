@@ -1,8 +1,10 @@
 <template>
     <div class="quick-search p-4 d-inline-block text-white shadow">
+        <div>
         <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit line1">Mexico Beach</fit-text>
-        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit">St. Joe Beach & WindMark</fit-text>
+        <fit-text :min=".5" :max="10" class="m-0 font-weight-light fit">St. Joe Beach &amp; WindMark</fit-text>
         <fit-text :min=".5" :max="10" class="m-0 font-weight-bold text-info fit">Real Estate</fit-text>
+        </div>
         <form action="property-search">
         <input name="q" value="search" type="hidden" >
         <input type="hidden" name="sort" value="list_date|desc" >

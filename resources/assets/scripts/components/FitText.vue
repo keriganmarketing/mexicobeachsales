@@ -20,7 +20,7 @@ export default {
             type: Number
         },
         max: {
-            default: 1,
+            default: 4,
             type: Number
         }
     },
@@ -58,7 +58,7 @@ export default {
     },
 
     destroyed () {
-        window.removeEventListener('resize', this.handleScroll)
+        window.removeEventListener('resize', this.calculate)
     }
 };
 </script>

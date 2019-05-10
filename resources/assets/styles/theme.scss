@@ -234,6 +234,10 @@ ul.navbar-nav {
     background: rgba(0,36,71,.8);
     border-bottom: .5rem solid $red;
 
+    .fit {
+        letter-spacing: 1px;
+    }
+
     @media screen and (min-width: 523px){
         width: 395px;
         margin-top:7rem;
@@ -244,7 +248,7 @@ ul.navbar-nav {
     }
 
     @media screen and (min-width: 678px){
-        width: 523px;
+        width: 525px;
     }
 
     @media screen and (min-width: 992px){

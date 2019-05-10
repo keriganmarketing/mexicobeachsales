@@ -236,23 +236,41 @@ ul.navbar-nav {
 
     .fit {
         letter-spacing: 1px;
+        font-size: 1.05em;
+
+        &.line1 { font-size: 2em; }
+        &.text-info { font-size: 2.35em; }
     }
 
     @media screen and (min-width: 523px){
         width: 395px;
         margin-top:7rem;
-    }
 
-    @media screen and (min-width: 576px) and (max-width: 667px){
-
+        .fit {
+            font-size: 1.35em;
+            &.line1 { font-size: 2.6em; }
+            &.text-info { font-size: 3.05em; }
+        }
     }
 
     @media screen and (min-width: 678px){
         width: 525px;
+
+        .fit {
+            font-size: 1.9em;
+            &.line1 { font-size: 3.6em; }
+            &.text-info { font-size: 4.2em; }
+        }
     }
 
     @media screen and (min-width: 992px){
         padding: 3rem 2.9rem 2.5rem !important;
+
+        .fit {
+            font-size: 1.7em;
+            &.line1 { font-size: 3.25em; }
+            &.text-info { font-size: 3.8em; }
+        }
     }
 
     select {

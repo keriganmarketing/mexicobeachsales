@@ -61,8 +61,8 @@ function quicksearch_func( $atts ){
     <quick-search search-terms=""></quick-search>
 
     <div class="d-flex feat-buttons">
-        <a class="btn top-homes btn-opaque flex-grow-1 font-weight-black" href="/top-25-residential-buys/" >Top 25<br><span class="font-weight-light">Homes</span></a>
-        <a class="btn top-lots btn-opaque flex-grow-1 font-weight-black" href="/top-15-lots/" >Top 15<br><span class="font-weight-light">Lots</span></a>
+        <a class="btn top-homes btn-opaque flex-grow-1 font-weight-black" href="/top-25-residential-buys/" ><span class="font-weight-light">Top 25</span><br>Homes</a>
+        <a class="btn top-lots btn-opaque flex-grow-1 font-weight-black" href="/top-15-lots/" ><span class="font-weight-light">Top 15</span><br>Lots</a>
         <a class="btn storm-deals flex-grow-1 font-weight-black" href="https://www.98realestategroup.com/properties/michael/" target="_blank"><span class="font-weight-light">Storm</span><br>Deals</a>
     </div>
     <?php

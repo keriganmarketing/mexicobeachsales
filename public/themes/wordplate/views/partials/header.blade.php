@@ -24,8 +24,8 @@
             
             <div class="flex-grow-1">
                 <div class="contact-nav">
-                    <a class="mail top-button" title="{{ get_field('email', 'option') }}" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-white oswald font-weight-bold">{{ get_field('email', 'option') }}</span></a>
-                    <a class="call top-button" title="{{ get_field('phone', 'option') }}" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-white oswald font-weight-bold">{{ get_field('phone', 'option') }}</span></a>
+                    <a class="mail top-button" title="{{ get_field('email', 'option') }}" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-white oswald">{{ get_field('email', 'option') }}</span></a>
+                    <a class="call top-button" title="{{ get_field('phone', 'option') }}" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-lg-inline-block text-white oswald">{{ get_field('phone', 'option') }}</span></a>
                     <button v-on:click="toggleMenu" class="d-xl-none btn btn-primary btn-sm" type="button" data-toggle="collapse" aria-controls="mobile-navigation-menu" aria-expanded="false" aria-label="Toggle navigation">
                         MENU <i
                                 class="fa" 

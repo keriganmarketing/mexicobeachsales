@@ -197,6 +197,10 @@ ul.navbar-nav {
             list-style: none;
             display: flex;
         }
+
+        .tag {
+            display: none !important;
+        }
     }
 
     .mobile-menu {

@@ -184,12 +184,12 @@ export default {
   user-select: none;
 }
 .search-select-option:hover {
-  background-color: #432021;
+  background-color: #0084c2;
   color: #fff;
 }
 .search-select-option.is-active,
 .search-select-option.is-active:hover {
-  background-color: #432021;
+  background-color: #0084c2;
   color: #fff;
 }
 .search-select-empty {

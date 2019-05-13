@@ -87,6 +87,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3002447', e
         padding: 1.5rem 0;
         margin: 0 auto;
         text-align: center;
+        text-decoration: none !important;
 
         @media screen and (min-width: 567px) {
             align-items: flex-start;
@@ -96,7 +97,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3002447', e
             border-radius: 3px;
             background-color: rgba(4,75,144,.8);
             padding: .25rem .75rem;
-            text-decoration: none !important;
             font-size: .88em;
         }
     }

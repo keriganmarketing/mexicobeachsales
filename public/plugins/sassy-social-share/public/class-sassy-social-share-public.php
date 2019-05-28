@@ -1525,30 +1525,8 @@ class Sassy_Social_Share_Public {
 	 */
 	private function fetch_fb_access_token() {
 
-		$fb_access_token = get_option( 'heateor_sss_fb_access_token' );
-		if ( $fb_access_token ) {
-			return $fb_access_token;
-		} else {
-			$fb_app_id = '';
-			$fb_app_secret = '';
-			if ( $this->options['fb_key'] && $this->options['fb_secret'] ) {
-				$fb_app_id = $this->options['fb_key'];
-				$fb_app_secret = $this->options['fb_secret'];
-			} elseif ( $this->options['vertical_fb_key'] && $this->options['vertical_fb_secret'] ) {
-				$fb_app_id = $this->options['vertical_fb_key'];
-				$fb_app_secret = $this->options['vertical_fb_secret'];
-			}
-			if ( $fb_app_id && $fb_app_secret ) {
-				$url = "https://graph.facebook.com/oauth/access_token?client_id=" . $fb_app_id . "&client_secret=" . $fb_app_secret . "&grant_type=client_credentials";
-				$response = wp_remote_get( $url,  array( 'timeout' => 15, 'user-agent'  => 'Sassy-Social-Share' ) );
-				if ( ! is_wp_error( $response ) && isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
-					$body = json_decode( wp_remote_retrieve_body( $response ) );
-					if ( isset( $body->access_token ) ) {
-						update_option( 'heateor_sss_fb_access_token', $body->access_token );
-						return $body->access_token;
-					}
-				}
-			}
+		if ( $this->options['fb_key'] && $this->options['fb_secret'] ) {
+			return $this->options['fb_key'] . '|' . $this->options['fb_secret'];
 		}
 
 		return false;
@@ -1622,10 +1600,10 @@ class Sassy_Social_Share_Public {
 					switch ( $provider ) {
 						case 'facebook':
 							$fb_access_token = $this->fetch_fb_access_token();
-							if ( $fb_access_token === false || $fb_access_token == '' ) {
-								$url = '';
-							} else {
+							if ( $fb_access_token ) {
 								$url = "https://graph.facebook.com/?access_token=" . $fb_access_token . "&fields=engagement&id=" . $target_url;
+							} else {
+								$url = '';
 							}
 							break;
 						case 'twitter':
@@ -1657,27 +1635,6 @@ class Sassy_Social_Share_Public {
 					}
 					if ( $url == '' ) { continue; }
 					$response = wp_remote_get( $url,  array( 'timeout' => 15, 'user-agent'  => 'Sassy-Social-Share' ) );
-					if ( $provider == 'facebook' && isset( $response['response']['code'] ) && 400 === $response['response']['code'] ) {
-						$body = json_decode( wp_remote_retrieve_body( $response ) );
-						if ( isset( $body->error ) && isset( $body->error->code ) && $body->error->code == 190 ) {
-							delete_option( 'heateor_sss_fb_access_token' );
-							$fb_access_token = $this->fetch_fb_access_token();
-							if ( $fb_access_token ) {
-								$url = "https://graph.facebook.com/?access_token=" . $fb_access_token . "&fields=engagement&id=" . $target_url;
-								$response = wp_remote_get( $url,  array( 'timeout' => 15, 'user-agent'  => 'Sassy-Social-Share' ) );
-								if ( ! is_wp_error( $response ) && isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
-									$body = wp_remote_retrieve_body( $response );
-									if ( ! empty( $body -> engagement ) && isset( $body -> engagement -> share_count ) ) {
-										$share_count_transient['facebook'] = $body -> engagement -> share_count;
-									} else {
-										$share_count_transient['facebook'] = 0;
-									}
-								} else {
-									$share_count_transient['facebook'] = 0;
-								}
-							}
-						}
-					}
 					if ( ! is_wp_error( $response ) && isset( $response['response']['code'] ) && 200 === $response['response']['code'] ) {
 						$body = wp_remote_retrieve_body( $response );
 						if ( $provider == 'pinterest' ) {

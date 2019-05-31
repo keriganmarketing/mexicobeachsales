@@ -253,6 +253,7 @@ ul.navbar-nav {
 .quick-search {
     width:100%;
     margin: auto;
+    padding: 11rem 0;
     text-align: center;
     // background: rgba(0,36,71,.8);
 
@@ -292,7 +293,7 @@ ul.navbar-nav {
 
     @media screen and (min-width: 678px){
         width: 525px;
-        margin-bottom: 7rem;
+        margin-bottom: 3rem;
 
         .fit {
             font-size: 1.9em;
@@ -304,13 +305,13 @@ ul.navbar-nav {
 
     @media screen and (min-width: 992px){
         // padding: 3rem 2.9rem 2.5rem !important;
-        margin-bottom: 11rem;
+        margin-bottom: 3rem;
 
         .fit {
             font-size: 1.7em;
             &.line1 { font-size: 3.25em; }
             &.text-info { font-size: 3.8em; }
-            &.new { font-size: 2em; }
+            &.new { font-size: 1.98em; }
         }
     }
 
@@ -508,6 +509,8 @@ main {
     z-index: 0;
     height: 100%;
     width: 100%;
+    left: 0;
+    top: 0;
 
     .slider-left, .slider-right {
         display: none;

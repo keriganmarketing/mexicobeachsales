@@ -10,7 +10,7 @@ mix.options({
     postCss: [
         require('autoprefixer')({
             grid: true,
-            browsers: ['last 2 versions', 'IE 7', 'Safari 9']
+            browsers: ['last 2 versions', 'IE 10', 'Safari 9']
         })
     ]
 });

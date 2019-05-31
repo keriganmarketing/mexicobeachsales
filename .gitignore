@@ -12,4 +12,5 @@ Vagrantfile
 composer.lock
 public/uploads/
 public/plugins/
+public/wflogs/
 composer.lock

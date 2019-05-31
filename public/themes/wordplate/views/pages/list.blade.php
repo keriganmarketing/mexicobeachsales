@@ -19,20 +19,22 @@
                     @foreach($listings as $miniListing)
                     <hr>
                     <h2 class="display-3 pt-4">
-                    #{{ $miniListing->menu_order }}: {{ $miniListing->post_title }} <small style="font-size:16px;" class="badge badge-secondary">MLS# {{ $miniListing->mls_account }}</small></h2>
+                    #{{ $miniListing->menu_order }}: {{ $miniListing->post_title }} - {{ $miniListing->sub_area }}</h2>
                     @if(date('Ymd', strtotime($miniListing->list_date)) >= date('Ymd', strtotime('-10 days')))
-                        <h3 style="font-size:16px;" class="badge badge-info">Just Listed</h3>
+                        <h3 style="font-size:16px;" class="badge badge-info d-inline-block mr-2">Just Listed</h3>
                     @endif
                     @if($miniListing->status == 'Sold/Closed')
-                        <h3 style="font-size:16px;" class="badge badge-info">Sold on <?php echo date( 'M j, Y', strtotime( $miniListing->sold_on ) ); ?> 
+                        <h3 style="font-size:16px;" class="badge badge-info d-inline-block mr-2">Sold on <?php echo date( 'M j, Y', strtotime( $miniListing->sold_on ) ); ?> 
                                     for $<?php echo number_format( $miniListing->sold_for ); ?></h3>
                     @endif
                     @if($miniListing->status == 'Contingent')
-                        <h3 style="font-size:16px;" class="badge badge-info">SALE CONTINGENT</h3>
+                        <h3 style="font-size:16px;" class="badge badge-info d-inline-block mr-2">SALE CONTINGENT</h3>
                     @endif
                     @if($miniListing->original_list_price > $miniListing->price && $miniListing->status == 'Active' && $miniListing->original_list_price != 0)
-                        <h3 style="font-size:16px;" class="badge badge-danger">REDUCED <span style="text-decoration:line-through">$<?php echo number_format( $miniListing->original_list_price ); ?></span> <strong>$<?php echo number_format( $miniListing->price); ?></strong></h3>
+                        <h3 style="font-size:16px;" class="badge badge-danger d-inline-block mr-2">REDUCED <span style="text-decoration:line-through">$<?php echo number_format( $miniListing->original_list_price ); ?></span> <strong>$<?php echo number_format( $miniListing->price); ?></strong></h3>
                     @endif
+
+                    <h3 style="font-size:16px;" class="badge badge-secondary d-inline-block mr-2">MLS# {{ $miniListing->mls_account }}</h3>
 
                     <div class="row mb-5 pt-4">
                         <div class="col-md-4">
@@ -69,8 +71,9 @@
                             <div class="card">
                                 <table class="table table-striped m-0">
                                 <tr><td>Price</td><td>${{ number_format($miniListing->price) }}</td></tr>
-                                @if($miniListing->list_date != '')
-                                    <tr><td>List Date</td><td>{{ date('M d, Y', strtotime($miniListing->list_date)) }}</td></tr>
+                                
+                                @if($miniListing->full_address != '')
+                                    <tr><td>Address</td><td>{{ $miniListing->full_address }}</td></tr>
                                 @endif
                                 @if($miniListing->bedrooms != '' && $miniListing->bedrooms != '0')
                                     <tr><td>Bedrooms</td><td>{{ number_format($miniListing->bedrooms) }}</td></tr>
@@ -92,6 +95,9 @@
                                 @endif
                                 @if($miniListing->lot_dimensions != '' && ($miniListing->lot_dimensions != '0' || $miniListing->lot_dimensions != ''))
                                     <tr><td>Lot Size</td><td>{{ $miniListing->lot_dimensions }}</td></tr>
+                                @endif
+                                @if($miniListing->list_date != '')
+                                    <tr><td>List Date</td><td>{{ date('M d, Y', strtotime($miniListing->list_date)) }}</td></tr>
                                 @endif
                                 </table>
                             </div>

@@ -3,8 +3,8 @@ Contributors: Heateor
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, whatsapp share, line share
 Requires at least: 2.5.0
-Tested up to: 5.1.1
-Stable tag: 3.2.22
+Tested up to: 5.2
+Stable tag: 3.2.24
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Reddit, Pinterest, WhatsApp and over 100 more.
@@ -123,6 +123,12 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.2.24 =
+* [Bugfix] Facebook share count was not working in some cases
+
+= 3.2.23 =
+* [Bugfix] Performance improvement and minor bugfix
+
 = 3.2.22 =
 * [New] Added Telegram in social media follow icons
 * [Bugfix] Performance improvement
@@ -756,3 +762,9 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 3.2.22 =
 * [New] Added Telegram in social media follow icons
 * [Bugfix] Performance improvement
+
+= 3.2.23 =
+* [Bugfix] Performance improvement and minor bugfix
+
+= 3.2.24 =
+* [Bugfix] Facebook share count was not working in some cases

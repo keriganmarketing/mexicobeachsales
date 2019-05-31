@@ -669,6 +669,14 @@ class Sassy_Social_Share_Admin {
 				heateor_sss_update_svg_css( $this->options['vertical_font_color_hover'], 'sassy-social-share-hover-svg-vertical' );
 			}
 			
+			if ( version_compare( '3.2.24', $current_version ) > 0 ) {
+				if ( ! $this->options['fb_key'] && ! $this->options['fb_secret'] && $this->options['vertical_fb_key'] && $this->options['vertical_fb_secret'] ) {
+					$this->options['fb_key'] = $this->options['vertical_fb_key'];
+					$this->options['fb_secret'] = $this->options['vertical_fb_secret'];
+				}
+				update_option( 'heateor_sss', $this->options );
+			}
+
 			if ( version_compare( '3.2.20', $current_version ) > 0 ) {
 				$this->options['fb_key'] = '';
 				$this->options['fb_secret'] = '';

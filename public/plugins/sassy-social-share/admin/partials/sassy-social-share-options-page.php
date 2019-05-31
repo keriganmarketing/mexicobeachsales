@@ -785,7 +785,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 						$likeButtons = array( 'facebook_share', 'facebook_like', 'facebook_recommend', 'twitter_tweet', 'linkedin_share', 'pinterest_pin', 'buffer_share', 'xing_share', 'yummly_share', 'reddit_badge' );
 						$sharingNetworks = array( 'facebook', 'twitter', 'linkedin', 'print', 'email', 'reddit', 'digg', 'float_it', 'tumblr', 'vkontakte', 'pinterest', 'xing', 'whatsapp', 'instagram', 'yummly', 'buffer', 'AIM', 'Amazon_Wish_List', 'AOL_Mail', 'App.net', 'Balatarin', 'BibSonomy', 'Bitty_Browser', 'Blinklist', 'Blogger_Post', 'BlogMarks', 'Bookmarks.fr', 'Box.net', 'BuddyMarks', 'Care2_News', 'CiteULike', 'Comment', 'Copy_Link', 'Diary.Ru', 'Diaspora', 'Diigo', 'Douban', 'Draugiem', 'DZone', 'Evernote', 'Facebook_Messenger', 'Fark', 'Fintel', 'Flipboard', 'Folkd', 'GentleReader', 'Google_Bookmarks', 'Google_Classroom', 'Google_Gmail', 'Hacker_News', 'Hatena', 'Instapaper', 'Jamespot', 'Kakao', 'Kik', 'Kindle_It', 'Known', 'Line', 'LiveJournal', 'Mail.Ru', 'Mendeley', 'Meneame', 'MeWe', 'mix', 'Mixi', 'MySpace', 'Netvouz', 'Odnoklassniki', 'Outlook.com', 'Papaly', 'Pinboard', 'Plurk', 'Pocket', 'PrintFriendly', 'Protopage_Bookmarks', 'Pusha', 'Qzone', 'Rediff MyPage', 'Refind', 'Renren', 'Sina Weibo', 'SiteJot', 'Skype', 'Slashdot', 'SMS', 'StockTwits', 'Svejo', 'Symbaloo_Feeds', 'Telegram', 'Threema', 'Trello', 'Tuenti', 'Twiddla', 'TypePad_Post', 'Viadeo', 'Viber', 'Wanelo', 'Webnews', 'WordPress', 'Wykop', 'Yahoo_Mail', 'Yoolink' );
 						?>
-						
+
 						<tr>
 							<th>
 							<img id="heateor_sss_rearrange_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -1018,6 +1018,16 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							</td>
 						</tr>
 						
+						<tbody class="heateor_sss_fb_share_count_msg" <?php echo ! ( ( ( in_array( 'facebook', $options['vertical_re_providers'] ) && ( isset( $options['vertical_counts'] ) || isset( $options['vertical_total_shares'] ) ) ) || ( in_array( 'facebook', $options['horizontal_re_providers'] ) && ( isset( $options['horizontal_counts'] ) || isset( $options['horizontal_total_shares'] ) ) ) ) && ! $options['fb_key'] && ! $options['fb_secret'] ) ? 'style = "display: none"' : '';?>>
+							<tr>
+								<td colspan="2">
+								<div style="color:green">
+								<?php _e( 'Save Facebook App Id and Secret in the "Miscellaneous" section for Facebook share count to work', 'sassy-social-share' ) ?>
+								</div>
+								</td>
+							</tr>
+						</tbody>
+
 						<tr>
 							<th>
 							<img id="heateor_sss_count_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -1058,58 +1068,6 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							</div>
 							</td>
 						</tr>
-						<?php 
-						$facebook_app_id = '';
-						if ( $options['fb_key'] ) {
-							$facebook_app_id = $options['fb_key'];
-						} elseif ( $options['vertical_fb_key'] ) {
-							$facebook_app_id = $options['vertical_fb_key'];
-						}
-
-						$facebook_app_secret = '';
-						if ( $options['fb_secret'] ) {
-							$facebook_app_secret = $options['fb_secret'];
-						} elseif ( $options['vertical_fb_secret'] ) {
-							$facebook_app_secret = $options['vertical_fb_secret'];
-						}
-						?>
-						<tbody id="heateor_sss_fb_share_count_options" <?php echo ! ( in_array( 'facebook', $options['horizontal_re_providers'] ) && ( isset( $options['horizontal_counts'] ) || isset( $options['horizontal_total_shares'] ) ) ) ? 'style = "display: none"' : '';?> >
-						<tr>
-							<th>
-							<img id="heateor_sss_fb_key_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
-							<label for="heateor_sss_fb_key"><?php _e( "Facebook App ID", 'sassy-social-share' ); ?></label>
-							</th>
-							<td>
-							<input id="heateor_sss_fb_key" name="heateor_sss[fb_key]" type="text" value="<?php echo $facebook_app_id ?>" />
-							</td>
-						</tr>
-						
-						<tr class="heateor_sss_help_content" id="heateor_sss_fb_key_help_cont">
-							<td colspan="2">
-							<div>
-							<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App ID', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
-							</div>
-							</td>
-						</tr>
-
-						<tr>
-							<th>
-							<img id="heateor_sss_fb_secret_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
-							<label for="heateor_sss_fblogin_secret"><?php _e( "Facebook App Secret", 'sassy-social-share' ); ?></label>
-							</th>
-							<td>
-							<input id="heateor_sss_fblogin_secret" name="heateor_sss[fb_secret]" type="text" value="<?php echo $facebook_app_secret ?>" />
-							</td>
-						</tr>
-						
-						<tr class="heateor_sss_help_content" id="heateor_sss_fb_secret_help_cont">
-							<td colspan="2">
-							<div>
-							<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App Secret', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
-							</div>
-							</td>
-						</tr>
-						</tbody>
 
 						<tr>
 							<th>
@@ -1230,7 +1188,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 						<tr>
 							<th>
 							<img id="heateor_sss_vertical_rearrange_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
-							<label><?php _e("Rearrange icons", 'sassy-social-share' ); ?></label>
+							<label><?php _e( "Rearrange icons", 'sassy-social-share' ); ?></label>
 							</th>
 						</tr>
 						
@@ -1491,7 +1449,17 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							</div>
 							</td>
 						</tr>
-						
+
+						<tbody class="heateor_sss_fb_share_count_msg" <?php echo ! ( ( ( in_array( 'facebook', $options['vertical_re_providers'] ) && ( isset( $options['vertical_counts'] ) || isset( $options['vertical_total_shares'] ) ) ) || ( in_array( 'facebook', $options['horizontal_re_providers'] ) && ( isset( $options['horizontal_counts'] ) || isset( $options['horizontal_total_shares'] ) ) ) ) && ! $options['fb_key'] && ! $options['fb_secret'] ) ? 'style = "display: none"' : '';?>>
+							<tr>
+								<td colspan="2">
+								<div style="color:green">
+								<?php _e( 'Save Facebook App Id and Secret in the "Miscellaneous" section for Facebook share count to work', 'sassy-social-share' ) ?>
+								</div>
+								</td>
+							</tr>
+						</tbody>
+
 						<tr>
 							<th>
 							<img id="heateor_sss_vertical_count_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -1532,44 +1500,6 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							</div>
 							</td>
 						</tr>
-
-						<tbody id="heateor_sss_fb_vertical_share_count_options" <?php echo ! ( in_array( 'facebook', $options['vertical_re_providers'] ) && ( isset( $options['vertical_counts'] ) || isset( $options['vertical_total_shares'] ) ) ) ? 'style = "display: none"' : '';?> >
-						<tr>
-							<th>
-							<img id="heateor_sss_vertical_fb_key_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
-							<label for="heateor_sss_vertical_fb_key"><?php _e( "Facebook App ID", 'sassy-social-share' ); ?></label>
-							</th>
-							<td>
-							<input id="heateor_sss_vertical_fb_key" name="heateor_sss[vertical_fb_key]" type="text" value="<?php echo $facebook_app_id ?>" />
-							</td>
-						</tr>
-						
-						<tr class="heateor_sss_help_content" id="heateor_sss_vertical_fb_key_help_cont">
-							<td colspan="2">
-							<div>
-							<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App ID', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
-							</div>
-							</td>
-						</tr>
-
-						<tr>
-							<th>
-							<img id="heateor_sss_vertical_fb_secret_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
-							<label for="heateor_sss_vertical_fb_secret"><?php _e( "Facebook App Secret", 'sassy-social-share' ); ?></label>
-							</th>
-							<td>
-							<input id="heateor_sss_vertical_fb_secret" name="heateor_sss[vertical_fb_secret]" type="text" value="<?php echo $facebook_app_secret; ?>" />
-							</td>
-						</tr>
-						
-						<tr class="heateor_sss_help_content" id="heateor_sss_vertical_fb_secret_help_cont">
-							<td colspan="2">
-							<div>
-							<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App Secret', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
-							</div>
-							</td>
-						</tr>
-						</tbody>
 
 						<tr>
 							<th>
@@ -1682,6 +1612,44 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 					<h3><label><?php _e( 'Miscellaneous', 'sassy-social-share' ) ?></label></h3>
 					<div class="inside">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="form-table editcomment menu_content_table">
+						<tbody id="heateor_sss_fb_share_count_options" <?php echo ! ( ( in_array( 'facebook', $options['vertical_re_providers'] ) && ( isset( $options['vertical_counts'] ) || isset( $options['vertical_total_shares'] ) ) ) || ( in_array( 'facebook', $options['horizontal_re_providers'] ) && ( isset( $options['horizontal_counts'] ) || isset( $options['horizontal_total_shares'] ) ) ) ) ? 'style = "display: none"' : '';?> >
+							<tr>
+								<th>
+								<img id="heateor_sss_fb_key_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
+								<label for="heateor_sss_fb_key"><?php _e( "Facebook App ID", 'sassy-social-share' ); ?></label>
+								</th>
+								<td>
+								<input id="heateor_sss_fb_key" name="heateor_sss[fb_key]" type="text" value="<?php echo $options['fb_key'] ?>" />
+								</td>
+							</tr>
+							
+							<tr class="heateor_sss_help_content" id="heateor_sss_fb_key_help_cont">
+								<td colspan="2">
+								<div>
+								<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App ID', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
+								</div>
+								</td>
+							</tr>
+
+							<tr>
+								<th>
+								<img id="heateor_sss_fb_secret_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
+								<label for="heateor_sss_fblogin_secret"><?php _e( "Facebook App Secret", 'sassy-social-share' ); ?></label>
+								</th>
+								<td>
+								<input id="heateor_sss_fblogin_secret" name="heateor_sss[fb_secret]" type="text" value="<?php echo $options['fb_secret'] ?>" />
+								</td>
+							</tr>
+							
+							<tr class="heateor_sss_help_content" id="heateor_sss_fb_secret_help_cont">
+								<td colspan="2">
+								<div>
+								<?php echo sprintf( __( 'Required for Facebook share count to work. Please follow the documentation at <a href="%s" target="_blank">this link</a> to get Facebook App Secret', 'sassy-social-share' ), 'http://support.heateor.com/how-to-get-facebook-app-id/' ) ?>
+								</div>
+								</td>
+							</tr>
+						</tbody>
+
 						<tr>
 							<th>
 							<img id="heateor_sss_footer_script_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -2063,12 +2031,12 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 					<h3><label><?php _e( 'FAQ', 'sassy-social-share' ) ?></label></h3>
 					<div class="inside faq" style="padding-left:8px">
 						<p><?php _e( '<strong>Note:</strong> Plugin will not work on local server. You should have an online website for the plugin to function properly.', 'sassy-social-share' ); ?></p>
-						<p>
 						<p><a href="http://support.heateor.com/why-is-sharer-not-showing-the-correct-image-title-and-other-meta-tags-content" target="_blank"><?php _e( 'Why is sharer not showing the correct image, title and other meta tags content?', 'sassy-social-share' ) ?></a></p>
+						<a href="javascript:void(0)"><?php _e( 'Why is Facebook share count not working?', 'sassy-social-share' ); ?></a>
+						<div><?php _e( 'Save Facebook App Id and Secret in the "Miscellaneous" section for Facebook share count to work', 'sassy-social-share' ); ?></div>
 						<p><a href="http://support.heateor.com/how-to-customize-the-url-being-shared" target="_blank"><?php _e( 'How to Customize the Url being Shared?', 'sassy-social-share' ) ?></a></p>
 						<a href="javascript:void(0)"><?php _e( 'Why is Instagram icon redirecting to Instagram website?', 'sassy-social-share' ); ?></a>
 						<div><?php _e( 'Instagram icon is there to send website visitors to the Instagram page of your choice. You can save the desired Instagram handle in "Instagram Username" option in "Standard Interface" and "Floating Interface" sections.', 'sassy-social-share' ); ?></div>
-						</p>
 						<p>
 						<a href="javascript:void(0)"><?php _e( 'Why are Twitter shares not appearing even after registering at Twitcount.com?', 'sassy-social-share' ); ?></a>
 						<div><?php _e( "It takes some time for their service to track the shares made on Twitter from your website. If you still feel it's taking too long you can contact their support directly from their website.", 'sassy-social-share' ); ?></div>
@@ -2111,10 +2079,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 			<div class="stuffbox">
 				<h3><label>Instagram Shoutout</label></h3>
 				<div class="inside" style="padding-left:7px">
-				<p><?php _e( 'If you can send (to hello@heateor.com) how our plugin is helping your business, we can share it on Instagram. You can also send any relevant hashtags and people to mention in the Instagram post.', 'sassy-social-share' ) ?></p>
-				<p><?php _e( '<b>Example</b> - Blah-Blah Online Coaching teaches various programming language courses through their website. They have emerged as one of the most popular online coaching websites in the past year. Anyone can become proficient in programming language of their choice in a very easy way in no time.', 'sassy-social-share' ) ?></p>
-				<p><?php _e( '@blahblahonlinecoaching proudly use #SassySocialShare to share content of their website. Be sure to visit their website at 
-		blahblahonlinecoaching.com where you can browse a variety of programming language courses.', 'sassy-social-share' ) ?></p>
+				<p><?php _e( 'If you can send (to hello@heateor.com) how this plugin is helping your business, we would be glad to shoutout on Instagram. You can also send any relevant hashtags and people to mention in the Instagram post.', 'sassy-social-share' ) ?></p>
 				</div>
 			</div>
 		</div>

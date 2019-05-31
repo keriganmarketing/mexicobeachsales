@@ -250,15 +250,12 @@ function heateorSssVerticalCounterPreview(val){
 }
 
 function heateor_sss_toggle_fb_share_count_options() {
-    if(heateorSssHorizontalFacebookShareEnabled && (heateorSssHorizontalShares || heateorSssHorizontalTotalShares)){
+    if((heateorSssHorizontalFacebookShareEnabled && (heateorSssHorizontalShares || heateorSssHorizontalTotalShares)) || (heateorSssVerticalFacebookShareEnabled && (heateorSssVerticalShares || heateorSssVerticalTotalShares))){
         jQuery('#heateor_sss_fb_share_count_options').css('display', 'table-row-group');
+        jQuery('.heateor_sss_fb_share_count_msg').css('display', 'table-row-group');
     }else{
         jQuery('#heateor_sss_fb_share_count_options').css('display', 'none');
-    }
-    if(heateorSssVerticalFacebookShareEnabled && (heateorSssVerticalShares || heateorSssVerticalTotalShares)){
-        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'table-row-group');
-    }else{
-        jQuery('#heateor_sss_fb_vertical_share_count_options').css('display', 'none');
+        jQuery('.heateor_sss_fb_share_count_msg').css('display', 'none');
     }
 }
 

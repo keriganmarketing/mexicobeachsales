@@ -36,8 +36,6 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-define('WP_CACHE', true);
-define( 'WPCACHEHOME', '/home/forge/mexicobeachsales.com/public/plugins/wp-super-cache/' );
 $application = new WordPlate\Application(
     realpath(dirname(__DIR__))
 );

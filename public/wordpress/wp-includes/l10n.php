@@ -767,10 +767,11 @@ function load_default_textdomain( $locale = null ) {
  * @since 1.5.0
  * @since 4.6.0 The function now tries to load the .mo file from the languages directory first.
  *
- * @param string $domain          Unique identifier for retrieving translated strings
- * @param string $deprecated      Optional. Use the $plugin_rel_path parameter instead. Default false.
- * @param string $plugin_rel_path Optional. Relative path to WP_PLUGIN_DIR where the .mo file resides.
- *                                Default false.
+ * @param string       $domain          Unique identifier for retrieving translated strings
+ * @param string|false $deprecated      Optional. Deprecated. Use the $plugin_rel_path parameter instead.
+ *                                      Default false.
+ * @param string|false $plugin_rel_path Optional. Relative path to WP_PLUGIN_DIR where the .mo file resides.
+ *                                      Default false.
  * @return bool True when textdomain is successfully loaded, false otherwise.
  */
 function load_plugin_textdomain( $domain, $deprecated = false, $plugin_rel_path = false ) {
@@ -944,8 +945,6 @@ function load_script_textdomain( $handle, $domain = 'default', $path = null ) {
 	$content_url = wp_parse_url( content_url() );
 	$site_url    = wp_parse_url( site_url() );
 
-
-	if(isset( $src_url['path']) && isset( $content_url['path'])) {
 	// If the host is the same or it's a relative URL.
 	if (
 		strpos( $src_url['path'], $content_url['path'] ) === 0 &&
@@ -968,7 +967,6 @@ function load_script_textdomain( $handle, $domain = 'default', $path = null ) {
 			$relative = trim( $relative, '/' );
 		}
 	}
-}
 
 	/**
 	 * Filters the relative path of scripts used for finding translation files.
@@ -1235,12 +1233,15 @@ function is_textdomain_loaded( $domain ) {
  * won't suffer from that problem.
  *
  * @since 2.8.0
+ * @since 5.2.0 Added the `$domain` parameter.
  *
- * @param string $name The role name.
+ * @param string $name   The role name.
+ * @param string $domain Optional. Text domain. Unique identifier for retrieving translated strings.
+ *                       Default 'default'.
  * @return string Translated role name on success, original name on failure.
  */
-function translate_user_role( $name ) {
-	return translate_with_gettext_context( before_last_bar( $name ), 'User role' );
+function translate_user_role( $name, $domain = 'default' ) {
+	return translate_with_gettext_context( before_last_bar( $name ), 'User role', $domain );
 }
 
 /**

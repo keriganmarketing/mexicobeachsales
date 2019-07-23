@@ -16,7 +16,7 @@
 
                             {{ the_content() }}
                             <p>&mdash; {{ get_field('byline') }}</p>
-                            <p class="mt-5"><a class="btn btn-primary" href="/client-reviews/#review-{{ get_the_ID() }}">Back to testimonials</a></p>
+                            <p class="mt-5"><a class="btn btn-primary" href="/about-zach/testimonials/#review-{{ get_the_ID() }}">Back to testimonials</a></p>
                         </article>
                     </div>
 

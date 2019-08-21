@@ -70,6 +70,9 @@ class Sassy_Social_Share_Shortcodes {
 			return;
 		}
 		global $post;
+		if ( ! is_object( $post ) ) {
+	        return;
+		}
 		if ( $url ) {
 			$target_url = $url;
 			$post_id = 0;

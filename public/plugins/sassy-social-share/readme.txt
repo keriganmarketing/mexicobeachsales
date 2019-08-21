@@ -3,8 +3,8 @@ Contributors: Heateor
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, whatsapp share, line share
 Requires at least: 2.5.0
-Tested up to: 5.2
-Stable tag: 3.2.24
+Tested up to: 5.2.2
+Stable tag: 3.2.26
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Reddit, Pinterest, WhatsApp and over 100 more.
@@ -123,6 +123,16 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.2.26 [19 June 2019] =
+* [New] Added option to customize logo and background color of social media follow icons
+* [New] Added Whatsapp in Social Media Follow icons
+* [Bugfix] Fixed the PHP notices being generated when using the widget
+* [Bugfix] Updated the background color for Reddit share icon for AMP according to the Reddit branding guidelines
+
+= 3.2.25 [6 June 2019] =
+* [Bugfix] Minor bugfixes
+* [Bugfix] Facebook App ID and Facebook App Secret options were not appearing in Miscellaneous section if Facebook share icon was enabled via shortcode or widget
+
 = 3.2.24 =
 * [Bugfix] Facebook share count was not working in some cases
 
@@ -768,3 +778,13 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.2.24 =
 * [Bugfix] Facebook share count was not working in some cases
+
+= 3.2.25 [6 June 2019] =
+* [Bugfix] Minor bugfixes
+* [Bugfix] Facebook App ID and Facebook App Secret options were not appearing in Miscellaneous section if Facebook share icon was enabled via shortcode or widget
+
+= 3.2.26 [19 June 2019] =
+* [New] Added option to customize logo and background color of social media follow icons
+* [New] Added Whatsapp in Social Media Follow icons
+* [Bugfix] Fixed the PHP notices being generated when using the widget
+* [Bugfix] Updated the background color for Reddit share icon for AMP according to the Reddit branding guidelines

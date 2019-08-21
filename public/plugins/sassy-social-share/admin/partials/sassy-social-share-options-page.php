@@ -742,7 +742,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 						}
 						?>
 
-						<tbody id="heateor_sss_instagram_options" <?php echo ! in_array( 'instagram', $options['horizontal_re_providers'] ) ? 'style = "display: none"' : '';?> >
+						<tbody id="heateor_sss_instagram_options" <?php echo ! isset( $options['horizontal_re_providers'] ) || ! in_array( 'instagram', $options['horizontal_re_providers'] ) ? 'style = "display: none"' : '';?> >
 							<tr>
 								<th>
 								<img id="heateor_sss_instagram_username_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -762,7 +762,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							</tr>
 						</tbody>
 
-						<tbody id="heateor_sss_comment_options" <?php echo ! in_array( 'Comment', $options['horizontal_re_providers'] ) ? 'style = "display: none"' : '';?> >
+						<tbody id="heateor_sss_comment_options" <?php echo ! isset( $options['horizontal_re_providers'] ) || ! in_array( 'Comment', $options['horizontal_re_providers'] ) ? 'style = "display: none"' : '';?> >
 							<tr>
 								<th>
 								<img id="heateor_sss_comment_container_id_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -797,7 +797,7 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 							<td colspan="2">
 							<script>
 							// facebook app id and secret options toggle variables
-							var heateorSssHorizontalShares = <?php echo isset( $options['horizontal_counts'] ) ? 'true' : 'false' ?>, heateorSssHorizontalTotalShares = <?php echo isset( $options['horizontal_total_shares'] ) ? 'true' : 'false' ?>, heateorSssVerticalShares = <?php echo isset( $options['vertical_counts'] ) ? 'true' : 'false' ?>, heateorSssVerticalTotalShares = <?php echo isset( $options['vertical_total_shares'] ) ? 'true' : 'false' ?>, heateorSssHorizontalFacebookShareEnabled = <?php echo in_array( 'facebook', $options['horizontal_re_providers'] ) ? 'true' : 'false'; ?>, heateorSssVerticalFacebookShareEnabled = <?php echo in_array( 'facebook', $options['vertical_re_providers'] ) ? 'true' : 'false'; ?>;
+							var heateorSssHorizontalShares = <?php echo isset( $options['horizontal_counts'] ) ? 'true' : 'false' ?>, heateorSssHorizontalTotalShares = <?php echo isset( $options['horizontal_total_shares'] ) ? 'true' : 'false' ?>, heateorSssVerticalShares = <?php echo isset( $options['vertical_counts'] ) ? 'true' : 'false' ?>, heateorSssVerticalTotalShares = <?php echo isset( $options['vertical_total_shares'] ) ? 'true' : 'false' ?>, heateorSssHorizontalFacebookShareEnabled = <?php echo in_array( 'facebook', $options['horizontal_re_providers'] ) ? 'true' : 'false'; ?>, heateorSssVerticalFacebookShareEnabled = <?php echo in_array( 'facebook', $options['vertical_re_providers'] ) ? 'true' : 'false'; ?>, heateorSssFacebookIDSecretNotSaved = <?php echo ! $options['fb_key'] || ! $options['fb_secret'] ? 'true' : 'false'; ?>;
 							<?php
 							$horSharingStyle = 'width:' . ( $options['horizontal_sharing_shape'] != 'rectangle' ? $options['horizontal_sharing_size'] : $options['horizontal_sharing_width'] ) . 'px;height:' . $line_height . 'px;';
 							$horDeliciousRadius = '';
@@ -1608,11 +1608,14 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 				<div class="clear"></div>
 				<div class="heateor_sss_left_column">
 
-				<div class="stuffbox">
-					<h3><label><?php _e( 'Miscellaneous', 'sassy-social-share' ) ?></label></h3>
+				<div class="stuffbox" id="heateor_sss_fb_share_count_options" <?php echo ! ( in_array( 'facebook', $options['vertical_re_providers'] ) || in_array( 'facebook', $options['horizontal_re_providers'] ) ) ? 'style = "display: none"' : '';?>>
+					<h3><label><?php _e( 'Facebook Share Count', 'sassy-social-share' ) ?></label></h3>
 					<div class="inside">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="form-table editcomment menu_content_table">
-						<tbody id="heateor_sss_fb_share_count_options" <?php echo ! ( ( in_array( 'facebook', $options['vertical_re_providers'] ) && ( isset( $options['vertical_counts'] ) || isset( $options['vertical_total_shares'] ) ) ) || ( in_array( 'facebook', $options['horizontal_re_providers'] ) && ( isset( $options['horizontal_counts'] ) || isset( $options['horizontal_total_shares'] ) ) ) ) ? 'style = "display: none"' : '';?> >
+						<tbody>
+							<tr>
+								<td colspan="2"><strong><?php _e( 'Note', 'sassy-social-share' ) ?>:</strong> <?php _e( 'Required only to track Facebook share count', 'sassy-social-share' ) ?></td>
+							</tr>
 							<tr>
 								<th>
 								<img id="heateor_sss_fb_key_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />
@@ -1649,7 +1652,14 @@ defined( 'ABSPATH' ) or die("Cheating........Uh!!");
 								</td>
 							</tr>
 						</tbody>
+					</table>
+					</div>
+				</div>
 
+				<div class="stuffbox">
+					<h3><label><?php _e( 'Miscellaneous', 'sassy-social-share' ) ?></label></h3>
+					<div class="inside">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="form-table editcomment menu_content_table">
 						<tr>
 							<th>
 							<img id="heateor_sss_footer_script_help" class="heateor_sss_help_bubble" src="<?php echo plugins_url( '../../images/info.png', __FILE__ ) ?>" />

@@ -170,7 +170,7 @@ class Sassy_Social_Share_Standard_Widget extends WP_Widget {
 	public function form( $instance ) { 
 		
 		// default widget settings
-		$defaults = array( 'title' => 'Share the joy', 'show_counts' => 0, 'total_shares' => 0, 'target_url' => 'default', 'target_url_custom' => '', 'before_widget_content' => '', 'after_widget_content' => '' );
+		$defaults = array( 'title' => 'Share the joy', 'show_counts' => '', 'total_shares' => '', 'target_url' => 'default', 'target_url_custom' => '', 'before_widget_content' => '', 'after_widget_content' => '', 'hide_for_logged_in' => '' );
 
 		foreach ( $instance as $key => $value ) {
 			if ( is_string( $value ) ) {
@@ -200,9 +200,9 @@ class Sassy_Social_Share_Standard_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'target_url' ); ?>"><?php _e( 'Target Url:', 'sassy-social-share' ); ?></label> 
 			<select style="width: 95%" onchange="heateorSssToggleHorSharingTargetUrl(this.value)" class="widefat" id="<?php echo $this->get_field_id( 'target_url' ); ?>" name="<?php echo $this->get_field_name( 'target_url' ); ?>">
 				<option value="">--<?php _e( 'Select', 'sassy-social-share' ) ?>--</option>
-				<option value="default" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'default' ? 'selected' : '' ; ?>>Url of the webpage where icons are located (default)</option>
-				<option value="homepage" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'homepage' ? 'selected' : '' ; ?>>Url of the homepage of your website</option>
-				<option value="custom" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'custom' ? 'selected' : '' ; ?>>Custom Url</option>
+				<option value="default" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'default' ? 'selected' : '' ; ?>><?php _e( 'Url of the webpage where icons are located (default)', 'sassy-social-share' ) ?></option>
+				<option value="homepage" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'homepage' ? 'selected' : '' ; ?>><?php _e( 'Url of the homepage of your website', 'sassy-social-share' ) ?></option>
+				<option value="custom" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'custom' ? 'selected' : '' ; ?>><?php _e( 'Custom Url', 'sassy-social-share' ) ?></option>
 			</select>
 			<input placeholder="Custom url" style="margin-top: 5px; <?php echo ! isset( $instance['target_url'] ) || $instance['target_url'] != 'custom' ? 'display: none' : '' ; ?>" class="widefat heateorSssHorSharingTargetUrl" id="<?php echo $this->get_field_id( 'target_url_custom' ); ?>" name="<?php echo $this->get_field_name( 'target_url_custom' ); ?>" type="text" value="<?php echo isset( $instance['target_url_custom'] ) ? $instance['target_url_custom'] : ''; ?>" /> 
 			<label for="<?php echo $this->get_field_id( 'before_widget_content' ); ?>"><?php _e( 'Before widget content:', 'sassy-social-share' ); ?></label> 
@@ -372,7 +372,7 @@ class Sassy_Social_Share_Floating_Widget extends WP_Widget {
 	public function form( $instance ) { 
 		
 		/* Set up default widget settings. */ 
-		$defaults = array( 'alignment' => 'left', 'show_counts' => 0, 'total_shares' => 0, 'left_offset' => '40', 'right_offset' => '0', 'target_url' => 'default', 'target_url_custom' => '', 'top_offset' => '100', 'vertical_bg' => '' );
+		$defaults = array( 'alignment' => 'left', 'show_counts' => '', 'total_shares' => '', 'left_offset' => '40', 'right_offset' => '0', 'target_url' => 'default', 'target_url_custom' => '', 'top_offset' => '100', 'vertical_bg' => '', 'hide_for_logged_in' => '' );
 
 		foreach ( $instance as $key => $value ) {
 			if ( is_string( $value ) ) {
@@ -409,9 +409,9 @@ class Sassy_Social_Share_Floating_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'target_url' ); ?>"><?php _e( 'Target Url:', 'sassy-social-share' ); ?></label> 
 			<select style="width: 95%" onchange="heateorSssToggleVerticalSharingTargetUrl(this.value)" class="widefat" id="<?php echo $this->get_field_id( 'target_url' ); ?>" name="<?php echo $this->get_field_name( 'target_url' ); ?>">
 				<option value="">--<?php _e( 'Select', 'sassy-social-share' ) ?>--</option>
-				<option value="default" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'default' ? 'selected' : '' ; ?>>Url of the webpage where icons are located (default)</option>
-				<option value="homepage" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'homepage' ? 'selected' : '' ; ?>>Url of the homepage of your website</option>
-				<option value="custom" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'custom' ? 'selected' : '' ; ?>>Custom Url</option>
+				<option value="default" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'default' ? 'selected' : '' ; ?>><?php _e( 'Url of the webpage where icons are located (default)', 'sassy-social-share' ) ?></option>
+				<option value="homepage" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'homepage' ? 'selected' : '' ; ?>><?php _e( 'Url of the homepage of your website', 'sassy-social-share' ) ?></option>
+				<option value="custom" <?php echo isset( $instance['target_url'] ) && $instance['target_url'] == 'custom' ? 'selected' : '' ; ?>><?php _e( 'Custom Url', 'sassy-social-share' ) ?></option>
 			</select>
 			<input placeholder="Custom url" style="width:95%; margin-top: 5px; <?php echo ! isset( $instance['target_url'] ) || $instance['target_url'] != 'custom' ? 'display: none' : '' ; ?>" class="widefat heateorSssVerticalSharingTargetUrl" id="<?php echo $this->get_field_id( 'target_url_custom' ); ?>" name="<?php echo $this->get_field_name( 'target_url_custom' ); ?>" type="text" value="<?php echo isset( $instance['target_url_custom'] ) ? $instance['target_url_custom'] : ''; ?>" /> 
 			<label for="<?php echo $this->get_field_id( 'alignment' ); ?>"><?php _e( 'Alignment', 'sassy-social-share' ); ?></label> 
@@ -479,7 +479,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			echo '<div>' . $instance['before_widget_content'] . '</div>'; 
 		}
 		
-		echo '<div class="heateor_sss_follow_icons_container">';
+		echo '<div class="heateor_sss_' . ( $instance['custom_color'] == 'standard' ? 'standard_' : 'floating_' ) . 'follow_icons_container">';
 
 		if ( ! empty( $instance['title'] ) ) { 
 			$title = apply_filters( 'widget_title', $instance[ 'title' ] ); 
@@ -563,6 +563,9 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		if ( $instance['vkontakte'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Vkontakte" title="Vkontakte" class="heateorSssSharing heateorSssVkontakteBackground"><a target="_blank" aria-label="Vkontakte" href="'. $instance['vkontakte'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssVkontakteSvg"></ss></a></i></li>';
 		}
+		if ( $instance['whatsapp'] ) {
+			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Whatsapp" title="Whatsapp" class="heateorSssSharing heateorSssWhatsappBackground"><a target="_blank" aria-label="Whatsapp" href="'. $instance['whatsapp'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssWhatsappSvg"></ss></a></i></li>';
+		}
 		if ( $instance['xing'] ) {
 			$html .= '<li class="heateorSssSharingRound"><i style="'. $icon_style .'" alt="Xing" title="Xing" class="heateorSssSharing heateorSssXingBackground"><a target="_blank" aria-label="Xing" href="'. $instance['xing'] .'" rel="noopener"><ss style="display:block" class="heateorSssSharingSvg heateorSssXingSvg"></ss></a></i></li>';
 		}
@@ -594,6 +597,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['size'] = intval( $new_instance['size'] );
 		$instance['icon_shape'] = $new_instance['icon_shape'];
+		$instance['custom_color'] = $new_instance['custom_color'];
 		$instance['facebook'] = $new_instance['facebook'];
 		$instance['twitter'] = $new_instance['twitter'];
 		$instance['instagram'] = $new_instance['instagram'];
@@ -613,6 +617,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 		$instance['tumblr'] = $new_instance['tumblr'];
 		$instance['vimeo'] = $new_instance['vimeo'];
 		$instance['vkontakte'] = $new_instance['vkontakte'];
+		$instance['whatsapp'] = $new_instance['whatsapp'];
 		$instance['xing'] = $new_instance['xing'];
 		$instance['youtube'] = $new_instance['youtube'];
 		$instance['youtube_channel'] = $new_instance['youtube_channel'];
@@ -632,7 +637,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 	public function form( $instance ) { 
 		
 		/* default widget settings. */ 
-		$defaults = array( 'title' => '', 'size' => '32', 'icon_shape' => 'round', 'facebook' => '', 'twitter' => '', 'instagram' => '', 'pinterest' => '', 'behance' => '', 'flickr' => '', 'foursquare' => '', 'github' => '', 'gitlab' => '', 'linkedin' => '', 'linkedin_company' => '', 'medium' => '', 'mewe' => '', 'odnoklassniki' => '', 'snapchat' => '', 'telegram' => '', 'tumblr' => '', 'vimeo' => '', 'vkontakte' => '', 'xing' => '', 'youtube' => '', 'youtube_channel' => '', 'rss_feed' => '', 'before_widget_content' => '', 'after_widget_content' => '' );
+		$defaults = array( 'title' => '', 'size' => '32', 'icon_shape' => 'round', 'custom_color' => '', 'facebook' => '', 'twitter' => '', 'instagram' => '', 'pinterest' => '', 'behance' => '', 'flickr' => '', 'foursquare' => '', 'github' => '', 'gitlab' => '', 'linkedin' => '', 'linkedin_company' => '', 'medium' => '', 'mewe' => '', 'odnoklassniki' => '', 'snapchat' => '', 'telegram' => '', 'tumblr' => '', 'vimeo' => '', 'vkontakte' => '', 'whatsapp' => '', 'xing' => '', 'youtube' => '', 'youtube_channel' => '', 'rss_feed' => '', 'before_widget_content' => '', 'after_widget_content' => '' );
 
 		foreach ( $instance as $key => $value ) {
 			if ( is_string( $value ) ) {
@@ -653,6 +658,12 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<select style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'icon_shape' ); ?>" name="<?php echo $this->get_field_name( 'icon_shape' ); ?>">
 				<option value="round" <?php echo ! isset( $instance['icon_shape'] ) || $instance['icon_shape'] == 'round' ? 'selected' : '' ; ?>><?php _e( 'Round', 'sassy-social-share' ); ?></option>
 				<option value="square" <?php echo isset( $instance['icon_shape'] ) && $instance['icon_shape'] == 'square' ? 'selected' : '' ; ?>><?php _e( 'Square', 'sassy-social-share' ); ?></option>
+			</select><br/><br/>
+			<label for="<?php echo $this->get_field_id( 'custom_color' ); ?>"><?php _e( 'Apply icon color and background color from Theme Selection section:', 'sassy-social-share' ); ?></label> 
+			<select style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'custom_color' ); ?>" name="<?php echo $this->get_field_name( 'custom_color' ); ?>">
+				<option value="" <?php echo ! isset( $instance['custom_color'] ) || $instance['custom_color'] == '' ? 'selected' : '' ; ?>><?php _e( 'No', 'sassy-social-share' ); ?></option>
+				<option value="standard" <?php echo isset( $instance['custom_color'] ) && $instance['custom_color'] == 'standard' ? 'selected' : '' ; ?>><?php _e( 'Yes, Standard Interface Theme', 'sassy-social-share' ); ?></option>
+				<option value="floating" <?php echo isset( $instance['custom_color'] ) && $instance['custom_color'] == 'floating' ? 'selected' : '' ; ?>><?php _e( 'Yes, Floating Interface Theme', 'sassy-social-share' ); ?></option>
 			</select><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e( 'Facebook URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" type="text" value="<?php echo $instance['facebook']; ?>" /><br/>
@@ -708,6 +719,9 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'vkontakte' ); ?>"><?php _e( 'Vkontakte URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'vkontakte' ); ?>" name="<?php echo $this->get_field_name( 'vkontakte' ); ?>" type="text" value="<?php echo $instance['vkontakte']; ?>" /><br/>
 			<span>https://vk.com/ID</span><br/><br/>
+			<label for="<?php echo $this->get_field_id( 'whatsapp' ); ?>"><?php _e( 'Whatsapp URL:', 'sassy-social-share' ); ?></label> 
+			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'whatsapp' ); ?>" name="<?php echo $this->get_field_name( 'whatsapp' ); ?>" type="text" value="<?php echo $instance['whatsapp']; ?>" /><br/>
+			<span>https://wa.me/PHONE_NUMBER</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'xing' ); ?>"><?php _e( 'Xing URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'xing' ); ?>" name="<?php echo $this->get_field_name( 'xing' ); ?>" type="text" value="<?php echo $instance['xing']; ?>" /><br/>
 			<span>https://www.xing.com/profile/ID</span><br/><br/>

@@ -68,6 +68,10 @@
                         </div>
                     </div>
 
+                    @if($listing->listing_office_name != '')
+                    <p class="text-center">This listing is managed by {{ $listing->listing_office_name }}.</p>
+                    @endif
+                    
                     @include('partials.disclaimer')
                     
                 </article>

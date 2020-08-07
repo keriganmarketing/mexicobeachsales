@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <portal :to="'modal-' + mlsAccount" >
+        <portal :to="'gallery-modal'" >
             <div class="modal-frame" v-if="galleryIsOpen == mlsAccount" >
                 <div class="modal-container">
                     <div v-if="photoOpen" class="photo-container" style="height: 80vh; overflow:hidden; padding:1rem;" @click="closeViewer()" >

@@ -1,3 +1,0 @@
-<div class="disclaimer mt-4 pt-4 border-top text-center">
-<small class="text-muted">Property information provided by the REALTOR’S® Association of Franklin and Gulf Counties, Inc.. IDX information is provided exclusively for consumers personal, non-commercial use, and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. This data is deemed reliable but is not guaranteed accurate by the MLS.</small>
-</div><?php /**PATH /home/forge/mexicobeachsales.com/public/themes/wordplate/views/partials/disclaimer.blade.php ENDPATH**/ ?>

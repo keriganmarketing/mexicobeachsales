@@ -1,0 +1,23 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "debug": true,
+                "forceAllTransforms": true,
+                "useBuiltIns": "usage",
+                "corejs": 3,
+                "targets": {
+                    "browsers": [
+                        "> 5%",
+                        "last 1 version",
+                        "ie 11"
+                    ]
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "@babel/plugin-transform-async-to-generator"
+    ]
+}

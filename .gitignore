@@ -8,8 +8,12 @@ Homestead.yaml
 /node_modules
 /vendor
 
+/public/languages
+/public/upgrade
+/public/uploads/.cache/*
 /public/uploads/
 /public/plugins/
+!plugins/index.php
 /public/wflogs/
 /public/wordpress/
 /public/.user.ini

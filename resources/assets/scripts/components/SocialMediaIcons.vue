@@ -13,6 +13,9 @@
 </template>
 
 <script>
+require('es6-promise').polyfill();
+import axios from 'axios'
+
     export default {
         props: {
             size: {
@@ -32,7 +35,7 @@
         },
 
         mounted () {
-            http.get("/wp-json/kerigansolutions/v1/social-links/")
+            axios.get("/wp-json/kerigansolutions/v1/social-links/")
                 .then(response => {
                     this.socialData = response.data; 
                 });

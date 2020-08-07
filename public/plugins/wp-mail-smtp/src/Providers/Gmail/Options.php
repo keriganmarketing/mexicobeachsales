@@ -27,13 +27,12 @@ class Options extends OptionsAbstract {
 
 		parent::__construct(
 			array(
-				'logo_url'    => wp_mail_smtp()->assets_url . '/images/google.svg',
+				'logo_url'    => wp_mail_smtp()->assets_url . '/images/providers/google.svg',
 				'slug'        => self::SLUG,
 				'title'       => esc_html__( 'Gmail', 'wp-mail-smtp' ),
 				'description' => sprintf(
-					wp_kses(
-						/* translators: %1$s - opening link tag; %2$s - closing link tag. */
-						__( 'Send emails using your Gmail or G Suite (formerly Google Apps) account, all while keeping your login credentials safe. Other Google SMTP methods require enabling less secure apps in your account and entering your password. However, this integration uses the Google API to improve email delivery issues while keeping your site secure.<br><br>Read our %1$sGmail documentation%2$s to learn how to configure Gmail or G Suite.', 'wp-mail-smtp' ),
+					wp_kses( /* translators: %s - URL to our Gmail doc. */
+						__( 'Send emails using your Gmail or G Suite (formerly Google Apps) account, all while keeping your login credentials safe. Other Google SMTP methods require enabling less secure apps in your account and entering your password. However, this integration uses the Google API to improve email delivery issues while keeping your site secure.<br><br>Read our <a href="%s" target="_blank" rel="noopener noreferrer">Gmail documentation</a> to learn how to configure Gmail or G Suite.', 'wp-mail-smtp' ),
 						array(
 							'br' => array(),
 							'a'  => array(
@@ -43,8 +42,10 @@ class Options extends OptionsAbstract {
 							),
 						)
 					),
-					'<a href="https://wpmailsmtp.com/docs/how-to-set-up-the-gmail-mailer-in-wp-mail-smtp/" target="_blank" rel="noopener noreferrer">',
-					'</a>'
+					'https://wpmailsmtp.com/docs/how-to-set-up-the-gmail-mailer-in-wp-mail-smtp/'
+				),
+				'notices'     => array(
+					'educational' => esc_html__( 'The Gmail mailer works well for sites that send low numbers of emails. However, Gmail\'s API has rate limitations and a number of additional restrictions that can lead to challenges during setup. If you expect to send a high volume of emails, or if you find that your web host is not compatible with the Gmail API restrictions, then we recommend considering a different mailer option.', 'wp-mail-smtp' ),
 				),
 				'php'         => '5.5',
 			)
@@ -92,7 +93,7 @@ class Options extends OptionsAbstract {
 					/>
 					<?php $this->display_const_set_message( 'WPMS_GMAIL_CLIENT_SECRET' ); ?>
 				<?php else : ?>
-					<input type="text" spellcheck="false"
+					<input type="password" spellcheck="false"
 						name="wp-mail-smtp[<?php echo esc_attr( $this->get_slug() ); ?>][client_secret]"
 						value="<?php echo esc_attr( $this->options->get( $this->get_slug(), 'client_secret' ) ); ?>"
 						id="wp-mail-smtp-setting-<?php echo esc_attr( $this->get_slug() ); ?>-client_secret"
@@ -180,6 +181,23 @@ class Options extends OptionsAbstract {
 					?>
 				</span>
 				<p class="desc">
+					<?php
+					printf(
+						wp_kses( /* translators: %s - URL to Google Gmail alias documentation page. */
+							__( 'If you want to use a different From Email address you can set-up a Google email alias. <a href="%s" target="_blank" rel="noopener noreferrer">Follow these instructions</a> and then select the From Email at the top of this page.', 'wp-mail-smtp' ),
+							[
+								'a' => [
+									'href'   => [],
+									'rel'    => [],
+									'target' => [],
+								],
+							]
+						),
+						'https://support.google.com/a/answer/33327'
+					);
+					?>
+				</p>
+				<p class="desc">
 					<?php esc_html_e( 'Removing the connection will give you an ability to redo the connection or link to another Google account.', 'wp-mail-smtp' ); ?>
 				</p>
 
@@ -187,7 +205,7 @@ class Options extends OptionsAbstract {
 
 		<?php else : ?>
 
-			<p class="inline-error">
+			<p class="inline-notice inline-error">
 				<?php esc_html_e( 'You need to save settings with Client ID and Client Secret before you can proceed.', 'wp-mail-smtp' ); ?>
 			</p>
 

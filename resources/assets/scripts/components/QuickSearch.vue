@@ -30,13 +30,11 @@
 </template>
 
 <script>
+require('es6-promise').polyfill();
+import axios from 'axios'
+var _ = require('lodash');
+
     export default {
-        props: {
-            'searchTerms': {
-                type: Object,
-                default: () => {}
-            }
-        },
         data(){
             return {
                 omni: null,

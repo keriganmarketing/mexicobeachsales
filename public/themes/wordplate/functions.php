@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-use KeriganSolutions\KMARealtor;
-
 require template_path('includes/ThemeControl.php');
-require('post-types/contact_request.php');
+require template_path('includes/plugins/plate.php');
+require template_path('post-types/contact_request.php');
 $wordplate = new ThemeControl();
 
 // Set theme defaults.
@@ -80,21 +79,6 @@ function getVideoImageFromEmbed($postContent){
     $videoParts = explode('/',$video[2]);
     return 'https://img.youtube.com/vi/'.$videoParts[3].'/maxresdefault.jpg';
 }
-
-// Add og:video meta tag for episodes and videos
-function yoast_add_og_video() {
-    if ( get_post_format() == 'video' ) {
-        $post = get_post();
-        preg_match('/\[embed(.*)](.*)\[\/embed]/', $post->post_content, $video);
-        $videoParts = explode('/',$video[2]);
-        echo '<meta property="og:video" content="' .  $video[2] . '" />', "\n";
-        echo '<meta property="og:video:secure_url" content="' .  str_replace('http://','https://' , $video[2]) . '" />', "\n";
-        echo '<meta property="og:video:height" content="1080" />', "\n";
-        echo '<meta property="og:video:width" content="1920" />', "\n";
-        //echo '<meta property="og:image" content="https://img.youtube.com/vi/'.$videoParts[3].'/maxresdefault.jpg" />', "\n";
-    }
-}
-add_action( 'wpseo_opengraph', 'yoast_add_og_video', 10, 1 );
 
 add_filter('wpseo_opengraph_image', function () {
     if ( get_post_format() == 'video' ) {

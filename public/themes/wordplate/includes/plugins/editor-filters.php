@@ -41,6 +41,6 @@ function wordplate_embed_handler_oembed_youtube($html, $url, $attr, $post_ID) {
     $html = preg_replace( '/(width|height)="\d*"/', '', $html );
     $html = preg_replace('/src="(.*?)"/', 'src="${1}?enablejsapi=1&loop=1&modestbranding=1&color=white&feature=oembed&showinfo=0"', $html);
 
-    return '<div class="' . esc_attr( implode( $classes, ' ' ) ) . '">' . $html . '</div>';
+    return '<div class="' . esc_attr( implode( ' ', $classes ) ) . '">' . $html . '</div>';
 }
 add_filter('embed_oembed_html', 'wordplate_embed_handler_oembed_youtube', 10, 4);

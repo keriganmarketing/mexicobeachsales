@@ -1,10 +1,10 @@
 === WP Mail SMTP by WPForms ===
 Contributors: wpforms, jaredatch, smub, slaFFik
-Tags: smtp, wp mail smtp, wordpress smtp, gmail smtp, sendgrid smtp, mailgun smtp, mail, mailer, phpmailer, wp_mail, email, mailgun, sengrid, gmail, wp smtp
+Tags: smtp, wp mail smtp, wordpress smtp, gmail smtp, sendgrid smtp, mailgun smtp, mail, mailer, phpmailer, wp_mail, email, mailgun, sengrid, gmail, pepipost, sendinblue, wp smtp
 Requires at least: 4.9
-Tested up to: 5.2
-Stable tag: 1.5.2
-Requires PHP: 5.3
+Tested up to: 5.4
+Stable tag: 2.2.1
+Requires PHP: 5.5.0
 
 The most popular WordPress SMTP and PHP Mailer plugin. Trusted by over 1 million sites.
 
@@ -42,24 +42,62 @@ This helps you fix all WordPress not sending email issues.
 
 WP Mail SMTP plugin includes many different SMTP setup options:
 
-1. Mailgun SMTP
-2. SendGrid SMTP
-3. Gmail SMTP
-4. Microsoft SMTP (Outlook.com and Office 365) <a href="https://wpmailsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion&utm_content=readme" rel="friend">[Pro]</a>
-5. Amazon SES SMTP <a href="https://wpmailsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion&utm_content=readme" rel="friend">[Pro]</a>
-4. All Other SMTP
+1. SMTP.com <strong>(Recommended)</strong>
+2. Pepipost SMTP <strong>(Recommended)</strong>
+3. Sendinblue SMTP
+4. Mailgun SMTP
+5. SendGrid SMTP
+6. Gmail SMTP
+7. Microsoft SMTP (Outlook.com and Office 365) <a href="https://wpmailsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion&utm_content=readme" rel="friend">[Pro]</a>
+8. Amazon SES SMTP <a href="https://wpmailsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion&utm_content=readme" rel="friend">[Pro]</a>
+9. All Other SMTP
 
 For all options, you can specify the "from name" and "email address" for outgoing emails.
 
 Instead of having users use different SMTP plugins and workflows for different SMTP providers, we decided to bring it all in one. This is what makes WP Mail SMTP, the best SMTP solution for WordPress.
 
+= SMTP.COM =
+
+SMTP.com is a recommended transactional email service.
+
+With over 22 years of email delivery expertise, SMTP.com has been around for almost as long as email itself. They are known among internet providers as one of the most reliable senders on the internet.
+
+Their easy integration process lets you start sending emails in minutes and benefit from years of experience. SMTP.com provides users 50,000 free emails the first 30 days.
+
+Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-smtp-com-mailer-in-wp-mail-smtp" rel="friend">SMTP.com documentation</a> for more details.
+
+= Pepipost SMTP =
+
+Pepipost is a recommended transactional email service.
+
+Every month they delivers over 8 billion emails from 20,000+ customers.
+
+Their mission is to reliably send emails in the most efficient way and at the most disruptive pricing ever.
+Pepipost provides users 30,000 emails the first 30 days.
+
+Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-pepipost-mailer-in-wp-mail-smtp/" rel="friend">Pepipost documentation</a> for more details.
+
+= Sendinblue SMTP =
+
+They serve 80,000+ growing companies around the world and send over 30 million emails each day.
+
+Their email deliverability experts are constantly at work optimizing the reliability and speed of their SMTP infrastructure. Sendinblue provides users 300 free emails per day.
+
+Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/" rel="friend">Sendinblue documentation</a> for more details.
+
 = Mailgun SMTP =
 
-Mailgun SMTP is a popular SMTP service provider that allows you to send large quantities of emails. They allow you to send your first 10,000 emails for free every month.
+Mailgun SMTP is a popular SMTP service provider that allows you to send large quantities of emails. They provide 5,000 free emails per month for 3 months.
 
 WP Mail SMTP plugin offers a native integration with MailGun. All you have to do is connect your Mailgun account, and you will improve your email deliverability.
 
 Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-mailgun-mailer-in-wp-mail-smtp/" rel="friend">Mailgun documentation</a> for more details.
+
+= SendGrid SMTP =
+
+SendGrid has a free SMTP plan that you can use to send up to 100 emails per day. With our native SendGrid SMTP integration, you can easily and securely set up SendGrid SMTP on your WordPress site.
+
+Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-sendgrid-mailer-in-wp-mail-smtp/" rel="friend">SendGrid documentation</a> for more details.
 
 = Gmail SMTP =
 
@@ -70,12 +108,6 @@ This allows you to use your <a href="http://www.wpbeginner.com/beginners-guide/h
 Unlike other Gmail SMTP plugins, our Gmail SMTP option uses OAuth to authenticate your Google account, keeping your login information 100% secure.
 
 Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-gmail-mailer-in-wp-mail-smtp/" rel="friend">Gmail documentation</a> for more details.
-
-= SendGrid SMTP =
-
-SendGrid has a free SMTP plan that you can use to send up to 100 emails per day. With our native SendGrid SMTP integration, you can easily and securely set up SendGrid SMTP on your WordPress site.
-
-Read our <a href="https://wpmailsmtp.com/docs/how-to-set-up-the-sendgrid-mailer-in-wp-mail-smtp/" rel="friend">SendGrid documentation</a> for more details.
 
 = Microsoft SMTP (Outlook.com and Office 365) =
 
@@ -131,7 +163,7 @@ You can sit back and relax while we set up everything for you. White glove setup
 
 The WP Mail SMTP team takes security very seriously. Not only does the plugin follow all security best practices, but we have several options available to ensure your site is safe and secure.
 
-- Direct SMTP mailer integrations (recommended), such as Google and Mailgun, use the official provider APIs. This means you never enter your username or password in the plugin settings and these credentials are not stored in the database. Instead, we use tokens or API keys which are much more secure.
+- Direct SMTP mailer integrations (recommended), such as SMTP.com, Pepipost and Mailgun, use the official provider APIs. This means you never enter your username or password in the plugin settings and these credentials are not stored in the database. Instead, we use tokens or API keys which are much more secure.
 
 - When using Other SMTP mailer, we provide the option to insert your password in your `wp-config.php` file, so it's not visible in your WordPress settings or saved in the database.
 
@@ -165,7 +197,7 @@ Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeg
 
 Yes! We have extensive documentation that covers setting up SMTP most popular email services.
 
-<a href="https://wpforms.com/docs/how-to-set-up-smtp-using-the-wp-mail-smtp-plugin/" rel="friend">Read our docs</a> to see the correct SMTP settings for each service.
+<a href="https://wpmailsmtp.com/docs/a-complete-guide-to-wp-mail-smtp-mailers/" rel="friend">Read our docs</a> to see the correct SMTP settings for each service.
 
 = Help! I need support or have an issue. =
 
@@ -196,6 +228,81 @@ By all means please contact us to discuss features or options you'd like to see 
 6. Send a Test Email
 
 == Changelog ==
+
+= 2.2.1 - 2020-07-09 =
+* Added: Gmail mailer now supports aliases.
+* Added: Support both old PHPMailer v5 (WordPress <=5.4) and PHPMailer v6 (WordPress >=5.5).
+* Changed: Pepipost mailer is now using the native API v5 instead of the SendGrid migration API.
+* Fixed: Incorrect Mailgun Domain Name option was not showing an email delivery error.
+* Fixed: Empty debug errors for the Sendinblue mailer are no more.
+* Fixed: Properly compare From Email option value with a correct default email address from WP core.
+
+= 2.1.1 - 2020-06-08 =
+* Changed: Remove current automatic default reply-to address and add WP filter `wp_mail_smtp_processor_set_default_reply_to` for setting default reply-to addresses.
+* Changed: Improve description for several options with links to an article about how to properly use constants.
+* Fixed: PHP parse error connected to Monolog library on PHP versions < 7.x.
+
+= 2.1.0 - 2020-06-04 =
+* Added: Async/scheduled tasks management support.
+* Added: New warning notification for selecting the "Default (none)" mailer and saving the plugin settings.
+* Changed: Set the original From Email as Reply-To address if it was overwritten by the Force From Email option.
+* Changed: The Force From Email option is now enabled by default, for new plugin installs.
+* Changed: Reply-To header is now set when not provided, equals to From Name/Email.
+* Fixed: Display a non-empty PHPMailer error when some non-SMTP mailers generate errors.
+* Fixed: Display a more accurate message, when the "channel - not found" error is triggered by SMTP.com API.
+* Fixed: Save and display debug errors for the "Other SMTP" mailer.
+* Fixed: Improve the debug details for the "Invalid address (setFrom)" error in the Email Test tab.
+* Fixed: Improve the debug details for SMTP CA verification fail, Gmail Guzzle requirements, and Gmail invalid grant errors.
+* Fixed: Improve the uninstall cleanup procedure.
+
+= 2.0.1 - 2020-05-07 =
+* Changed: Improved description of the "Do Not Send" plugin option.
+* Fixed: Due to Pepipost API changes we now convert new lines so they are preserved in plain text emails.
+* Fixed: Downgrade internal Guzzle dependency to 6.4 to temporarily fix compatibility issues with WordPress and Guzzle 6.5. Affects Gmail mailer.
+
+= 2.0.0 - 2020-04-27 =
+* IMPORTANT: Support for PHP 5.2-5.4 has been discontinued. If you are running one of those versions, you MUST upgrade PHP before installing or upgrading to WP Mail SMTP v2.0. Failure to do that will disable WP Mail SMTP functionality.
+* Added: new mailer - SMTP.com integration.
+* Changed: Plugin filters that change the FROM Name/Email in emails are now always running last.
+* Fixed: `false` value of the `WPMS_SMTP_AUTH`/`WPMS_SMTP_AUTOTLS` constants was not properly handled in UI.
+* Fixed: various minor code and internal links improvements.
+
+= 1.9.0 - 2020-03-23 =
+* Added: Add various Status tests and Info section on Tools > Site Health page.
+* Added: Notify admin if there are unsaved changes in plugin admin area options.
+* Fixed: Test email now has a proper bottom margin for better look.
+* Changed: Update "About us" plugin page with relevant information.
+* Changed: Save default WordPress FROM Email address when incorrect FROM Email address is saved by a user.
+
+= 1.8.1 - 2019-12-13 =
+* Fixed: Revert Guzzle version to 6.4.1 because Sendinblue and Gmail mailers may experience issues under certain circumstances while sending emails (not all sites are affected).
+* Fixed: Make compatible the WordPress PhpMailer class inline attachments management with the Sendgrid API.
+
+= 1.8.0 - 2019-12-12 =
+* Added: New recommended mailer: Pepipost.
+* Added: "Suggest a Mailer" link in a list of mailers to send us your ideas about new ones.
+* Fixed: Sendgrid: Content ID for attachments missing.
+* Changed: Timeout to HTTP requests (pepipost, sendgrid, mailgun), same as max_execution_time, to prevent fails when sending emails with big attachments.
+
+= 1.7.1 - 2019-11-11 =
+* Fixed: Compatibility with WordPress 5.3.
+* Fixed: `Processor::get_default_email()` always returns empty value when server incorrectly configured.
+
+= 1.7.0 - 2019-10-24 =
+* Added: Add a new constant `WPMS_DO_NOT_SEND` to block email sending.
+* Fixed: Default email (wordpress@example.com) rewriting in CLI mode.
+* Fixed: Incorrect conflicts detection with certain plugins.
+* Fixed: various typos in plugin settings.
+
+= 1.6.2 - 2019-09-02 =
+* Fixed: Race condition when loading with certain plugins, that send emails very early. Makes email delivery more reliable.
+
+= 1.6.0 - 2019-08-21 =
+* Added: New transactional mailer: Sendinblue.
+* Added: Educate users to use transactional mailers for better deliverability.
+* Added: New option and filter to disable admin area delivery error notices.
+* Changed: Hide private API key saved in the DB for API based mailers using `input[type=password]`.
+* Changed: Update links to various docs, pointing now to https://wpmailsmtp.com.
 
 = 1.5.2 - 2019-07-18 =
 * Fixed: "Redirect URI mismatch" error for "Gmail" mailer when trying to re-authorize an account that was initially created with version < v1.5.0.
@@ -344,116 +451,3 @@ By all means please contact us to discuss features or options you'd like to see 
 * Changed: SMTP password field does not display real password at all when using constants in `wp-config.php` to define it.
 * Changed: Escape properly all translations.
 * Changed: More helpful test email content (with a mailer name).
-
-= 0.11.2 - 2017-11-28 =
-* Added: Setting to hide announcement feed.
-* Changed: Announcement feed data.
-
-= 0.11.1 - 2017-10-30 =
-* Fixed: Older PHP compatibility fix.
-
-= 0.11 - 2017-10-30 =
-* Added: Helper description to Return Path option.
-* Added: Filter `wp_mail_smtp_admin_test_email_smtp_debug` to increase the debug message verbosity.
-* Added: PHP 5.2 notice.
-* Added: Announcement feed.
-* Changed: Localization fixes, proper locale name.
-* Changed: Code style improvements and optimizations for both HTML and PHP.
-* Changed: Inputs for emails now have a proper type `email`, instead of a generic `text`.
-* Changed: Turn off `$phpmailer->SMTPAutoTLS` when `No encryption` option is set to prevent error while sending emails.
-* Changed: Hide Pepipost for those who are not using it.
-* Changed: WP CLI support improved.
-
-= 0.10.1 =
-* Addition of Pepipost and cleanup of admin page.
-
-= 0.10.0 =
-* Addition of Pepipost and cleanup of admin page.
-
-= 0.9.6 =
-* Minor security fix, sanitize test email address.
-
-= 0.9.5 =
-* Minor security fix, hat tip JD Grimes.
-
-= 0.9.4 =
-* Improvement to the test email function, very low priority update.
-
-= 0.9.3 =
-* Fixing reported issue with passing by reference. props Adam Conway
-
-= 0.9.2 =
-* Removing the deprecation notice.
-
-= 0.9.1 =
-* $phpmailer->language became protected in WP 3.2, no longer unset on debug output.
-
-= 0.9.0 =
-* Typo in the From email description.
-* Removed changelog from plugin file, no need to duplicate it.
-* Optionally set $phpmailer->Sender from from email, helps with sendmail / mail().
-
-= 0.8.7 =
-* Fix for a long standing bug that caused an error during plugin activation.
-
-= 0.8.6 =
-* The Settings link really does work this time, promise. Apologies for the unnecessary updates.
-
-= 0.8.5 =
-* Bugfix, the settings link on the Plugin page was broken by 0.8.4.
-
-= 0.8.4 =
-* Minor bugfix, remove use of esc_html() to improve backwards compatibility.
-* Removed second options page menu props ovidiu.
-
-= 0.8.3 =
-* Bugfix, return WPMS_MAIL_FROM_NAME, props nacin.
-* Add Settings link, props Mike Challis http://profiles.wordpress.org/MikeChallis/
-
-= 0.8.2 =
-* Bugfix, call phpmailer_init_smtp() correctly, props Sinklar.
-
-= 0.8.1 =
-* Internationalisation improvements.
-
-= 0.8 =
-* Added port, SSL/TLS, option whitelisting, validate_email(), and constant options.
-
-= 0.7 =
-* Added checks to only override the default from name / email
-
-= 0.6 =
-* Added additional SMTP debugging output
-
-= 0.5.2 =
-* Fixed a pre 2.3 bug to do with mail from
-
-= 0.5.1 =
-* Added a check to display a warning on versions prior to 2.3
-
-= 0.5.0 =
-* Upgraded to match 2.3 filters which add a second filter for from name
-
-= 0.4.2 =
-* Fixed a bug in 0.4.1 and added more debugging output
-
-= 0.4.1 =
-* Added $phpmailer->ErroInfo to the test mail output
-
-= 0.4 =
-* Added the test email feature and cleaned up some other bits and pieces
-
-= 0.3.2 =
-* Changed to use register_activation_hook for greater compatability
-
-= 0.3.1 =
-* Added readme for WP-Plugins.org compatability
-
-= 0.3 =
-* Various bugfixes and added From options
-
-= 0.2 =
-* Reworked approach as suggested by westi, added options page
-
-= 0.1 =
-* Initial approach, copying the wp_mail function and replacing it

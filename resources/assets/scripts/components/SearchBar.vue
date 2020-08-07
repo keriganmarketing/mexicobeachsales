@@ -123,6 +123,8 @@
 </template>
 
 <script>
+var _ = require('lodash');
+
     export default {
         props: {
             'searchTerms': {

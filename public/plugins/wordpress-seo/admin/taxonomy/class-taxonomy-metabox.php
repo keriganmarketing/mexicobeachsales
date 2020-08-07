@@ -69,6 +69,7 @@ class WPSEO_Taxonomy_Metabox {
 			$product_title .= ' Premium';
 		}
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $product_title is hardcoded.
 		printf( '<div id="wpseo_meta" class="postbox yoast wpseo-taxonomy-metabox-postbox"><h2><span>%1$s</span></h2>', $product_title );
 
 		echo '<div class="inside">';
@@ -76,6 +77,7 @@ class WPSEO_Taxonomy_Metabox {
 
 
 		echo '<div class="wpseo-metabox-content">';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Reason: $product_title is hardcoded.
 		printf( '<div class="wpseo-metabox-menu"><ul role="tablist" class="yoast-aria-tabs" aria-label="%s">', $product_title );
 
 		foreach ( $content_sections as $content_section ) {
@@ -98,7 +100,7 @@ class WPSEO_Taxonomy_Metabox {
 	 * @return WPSEO_Metabox_Section[]
 	 */
 	private function get_content_sections() {
-		$content_sections = array();
+		$content_sections = [];
 
 		$content_sections[] = $this->get_seo_meta_section();
 
@@ -107,7 +109,12 @@ class WPSEO_Taxonomy_Metabox {
 			$content_sections[] = $this->get_readability_meta_section();
 		}
 
-		$content_sections[] = $this->get_social_meta_section();
+		$show_facebook = WPSEO_Options::get( 'opengraph', false );
+		$show_twitter  = WPSEO_Options::get( 'twitter', false );
+
+		if ( $show_facebook || $show_twitter ) {
+			$content_sections[] = $this->get_social_meta_section( $show_facebook, $show_twitter );
+		}
 
 		return $content_sections;
 	}
@@ -133,27 +140,16 @@ class WPSEO_Taxonomy_Metabox {
 		if ( WPSEO_Capability_Utils::current_user_can( 'wpseo_edit_advanced_metadata' ) || WPSEO_Options::get( 'disableadvanced_meta' ) === false ) {
 			$taxonomy_settings_fields = new WPSEO_Taxonomy_Settings_Fields( $this->term );
 
-			$advanced_collapsible = new WPSEO_Paper_Presenter(
-				__( 'Advanced', 'wordpress-seo' ),
-				null,
-				array(
-					'collapsible' => true,
-					'class'       => 'metabox wpseo-form wpseo-collapsible-container',
-					'content'     => $this->taxonomy_tab_content->html( $taxonomy_settings_fields->get() ),
-					'paper_id'    => 'collapsible-advanced-settings',
-				)
-			);
-
-			$html_after = '<div class="wpseo_content_wrapper">' . $advanced_collapsible->get_output() . '</div>';
+			$html_after = $this->taxonomy_tab_content->html( $taxonomy_settings_fields->get() );
 		}
 
 		return new WPSEO_Metabox_Section_React(
 			'content',
 			$label,
 			$content,
-			array(
+			[
 				'html_after' => $html_after,
-			)
+			]
 		);
 	}
 
@@ -169,46 +165,33 @@ class WPSEO_Taxonomy_Metabox {
 	/**
 	 * Returns the metabox section for the social settings.
 	 *
+	 * @param boolean $show_facebook Whether to render the facebook fields.
+	 * @param boolean $show_twitter  Whether to render the twitter fields.
+	 *
 	 * @return WPSEO_Metabox_Section
 	 */
-	private function get_social_meta_section() {
+	private function get_social_meta_section( $show_facebook, $show_twitter ) {
 		$this->taxonomy_social_fields = new WPSEO_Taxonomy_Social_Fields( $this->term );
-		$this->social_admin           = new WPSEO_Social_Admin();
 
-		$collapsibles   = array();
-		$collapsibles[] = $this->create_collapsible( 'facebook', 'opengraph', 'facebook-alt', __( 'Facebook', 'wordpress-seo' ) );
-		$collapsibles[] = $this->create_collapsible( 'twitter', 'twitter', 'twitter', __( 'Twitter', 'wordpress-seo' ) );
+		$content = '';
 
-		return new WPSEO_Metabox_Collapsibles_Sections(
-			'social',
-			'<span class="dashicons dashicons-share"></span>' . __( 'Social', 'wordpress-seo' ),
-			$collapsibles
-		);
-	}
+		if ( $show_facebook ) {
+			$facebook_fields = $this->taxonomy_social_fields->get_by_network( 'opengraph' );
+			$content        .= $this->taxonomy_tab_content->html( $facebook_fields );
+		};
 
-	/**
-	 * Creates a social network tab.
-	 *
-	 * @param string $name    The name of the tab.
-	 * @param string $network The network of the tab.
-	 * @param string $icon    The icon for the tab.
-	 * @param string $label   The label for the tab.
-	 *
-	 * @return WPSEO_Metabox_Tab A WPSEO_Metabox_Tab instance.
-	 */
-	private function create_collapsible( $name, $network, $icon, $label ) {
-		if ( WPSEO_Options::get( $network ) !== true ) {
-			return new WPSEO_Metabox_Null_Tab();
+		if ( $show_twitter ) {
+			$twitter_fields = $this->taxonomy_social_fields->get_by_network( 'twitter' );
+			$content       .= $this->taxonomy_tab_content->html( $twitter_fields );
 		}
 
-		$meta_fields = $this->taxonomy_social_fields->get_by_network( $network );
+		// Add react target.
+		$content .= '<div id="wpseo-section-social"></div>';
 
-		$tab_settings = new WPSEO_Metabox_Collapsible(
-			$name,
-			$this->social_admin->get_premium_notice( $network ) . $this->taxonomy_tab_content->html( $meta_fields ),
-			$label
+		return new WPSEO_Metabox_Section_React(
+			'social',
+			'<span class="dashicons dashicons-share"></span>' . __( 'Social', 'wordpress-seo' ),
+			$content
 		);
-
-		return $tab_settings;
 	}
 }

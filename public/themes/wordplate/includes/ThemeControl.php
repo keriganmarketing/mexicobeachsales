@@ -1,5 +1,4 @@
 <?php
-use KeriganSolutions\KMARealtor;
 
 class ThemeControl
 {
@@ -27,7 +26,6 @@ class ThemeControl
         //include required files
         require template_path('includes/plugins/plate.php');
         require template_path('includes/plugins/theme-setup.php');
-        require template_path('includes/plugins/branded-login.php');
         require template_path('includes/plugins/editor-filters.php');
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
@@ -83,7 +81,7 @@ class ThemeControl
             '<div class="team-grid">
                 <div class="row justify-content-center">';
         
-            $team = new Team();
+            $team = new KeriganSolutions\KMATeam\Team();
             $members = $team->queryTeam();
         
             foreach($members as $member){

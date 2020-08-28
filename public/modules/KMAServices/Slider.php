@@ -55,7 +55,8 @@ class Slider {
             '/sliders',
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'getSlides']
+                'callback' => [$this, 'getSlides'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

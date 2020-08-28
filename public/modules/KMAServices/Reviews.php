@@ -45,7 +45,8 @@ class Reviews {
     //         '/reviews',
     //         [
     //             'methods' => 'GET',
-    //            'callback' => [$this, 'getReviews']
+    //            'callback' => [$this, 'getReviews'],
+    //            'permission_callback' => '__return_true'
     //         ]
     //     );
     //}

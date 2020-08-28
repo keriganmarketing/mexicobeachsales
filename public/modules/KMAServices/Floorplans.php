@@ -60,7 +60,8 @@ class Floorplans {
             '/floorplans',
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'getFloorplans']
+                'callback' => [$this, 'getFloorplans'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

@@ -13,7 +13,8 @@ class RestMenus {
         add_action( 'rest_api_init', function () {
             register_rest_route( 'kerigansolutions/v1', '/navigation-menu', array(
                 'methods' => 'GET',
-                'callback' => [$this, 'getMenuJson']
+                'callback' => [$this, 'getMenuJson'],
+                'permission_callback' => '__return_true'
             ) );
         } );
     }

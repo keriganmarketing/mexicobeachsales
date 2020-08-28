@@ -49,7 +49,8 @@ class Booking extends ContactForm {
             '/submit-booking',
             [
                 'methods' => 'POST',
-                'callback' => [$this, 'submitBookingForm']
+                'callback' => [$this, 'submitBookingForm'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

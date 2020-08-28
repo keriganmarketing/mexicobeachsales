@@ -40,7 +40,8 @@ class Areas {
         register_rest_route( 'kerigansolutions/v1', '/areas',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'getPosts' ]
+                'callback' => [ $this, 'getPosts' ],
+                'permission_callback' => '__return_true'
             ]
         );
     }

@@ -63,7 +63,8 @@ class Portfolio {
         register_rest_route( 'kerigansolutions/v1', '/projects',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'getPosts' ]
+                'callback' => [ $this, 'getPosts' ],
+                'permission_callback' => '__return_true'
             ]
         );
     }

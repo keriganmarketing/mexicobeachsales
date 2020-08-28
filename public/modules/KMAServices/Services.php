@@ -54,7 +54,8 @@ class Services {
             '/services',
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'getServices']
+                'callback' => [$this, 'getServices'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

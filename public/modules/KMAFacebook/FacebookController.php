@@ -330,35 +330,40 @@ class FacebookController
         register_rest_route( 'kerigansolutions/v1', '/autoblogtoken',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'exchangeToken' ]
+                'callback' => [ $this, 'exchangeToken' ],
+                'permission_callback' => '__return_true'
             ]
         );
 
         register_rest_route( 'kerigansolutions/v1', '/forcepostsync',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'syncPosts' ]
+                'callback' => [ $this, 'syncPosts' ],
+                'permission_callback' => '__return_true'
             ]
         );
 
         register_rest_route( 'kerigansolutions/v1', '/forcephotosync',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'syncPhotos' ]
+                'callback' => [ $this, 'syncPhotos' ],
+                'permission_callback' => '__return_true'
             ]
         );
 
         register_rest_route( 'kerigansolutions/v1', '/forceeventsync',
             [
                 'methods'  => 'GET',
-                'callback' => [ $this, 'syncEvents' ]
+                'callback' => [ $this, 'syncEvents' ],
+                'permission_callback' => '__return_true'
             ]
         );
 
         // register_rest_route( 'kerigansolutions/v1', '/forcereviewsync',
         //     [
         //         'methods'  => 'GET',
-        //         'callback' => [ $this, 'syncReviews' ]
+        //         'callback' => [ $this, 'syncReviews' ],
+        //         'permission_callback' => '__return_true'
         //     ]
         // );
     }

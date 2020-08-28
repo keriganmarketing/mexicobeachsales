@@ -105,7 +105,8 @@ class ContactForm
             '/submit-contact-form',
             [
                 'methods' => 'POST',
-                'callback' => [$this, 'submitContactForm']
+                'callback' => [$this, 'submitContactForm'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

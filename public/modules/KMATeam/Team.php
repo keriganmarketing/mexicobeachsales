@@ -183,7 +183,8 @@ class Team {
             '/team',
             [
                 'methods' => 'GET',
-                'callback' => [$this, 'getTeam']
+                'callback' => [$this, 'getTeam'],
+                'permission_callback' => '__return_true'
             ]
         );
     }

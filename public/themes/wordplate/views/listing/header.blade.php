@@ -1,5 +1,5 @@
 <header class="p-0 text-center text-md-left">
-    <h1 class="mb-0">{{ the_title() }} <br>
+    <h1 class="mb-0">{{ $listing->full_address }} <br>
         {{ $listing->city . ', ' . $listing->state }}</h1>
 
     <p class="property-type text-muted mb-2">{{ $listing->prop_type }}</p>

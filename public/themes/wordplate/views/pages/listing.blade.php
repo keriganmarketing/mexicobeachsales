@@ -39,7 +39,7 @@
                                     icon="envelope"
                                     class="share-network email"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
                                     description="{{ $listing->remarks }}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
@@ -47,7 +47,7 @@
                                     icon="facebook"
                                     class="share-network facebook"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
                                     description="{{ wp_trim_words($listing->remarks, 20, '...') }}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
@@ -55,14 +55,14 @@
                                     icon="linkedin"
                                     class="share-network linkedin"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
                                     network="pinterest"
                                     icon="pinterest"
                                     class="share-network pinterest"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
                                     media="{{ $listing->media_objects->data[0]->url }}"
                                 ></social-sharing-icons>
                                 <social-sharing-icons
@@ -70,7 +70,7 @@
                                     icon="twitter"
                                     class="share-network twitter"
                                     url="{{ (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"
-                                    title="{{ the_title() . ' | ' . $listing->city . ', ' . $listing->state }}"
+                                    title="{{ $listing->full_address . ' | ' . $listing->city . ', ' . $listing->state }}"
                                 ></social-sharing-icons>
                                 </div>
                             </div>

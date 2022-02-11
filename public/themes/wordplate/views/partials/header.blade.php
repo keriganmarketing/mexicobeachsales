@@ -13,7 +13,7 @@
                             alt="{{ get_bloginfo('name') }}"
                             class="img-fluid"
                         >
-                        <small class="tag mt-2"><em>over $250 million sold</em></small>
+                        <small class="tag mt-2"><em>over $455 million sold</em></small>
                     </a>
                     
                 @else

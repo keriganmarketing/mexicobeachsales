@@ -24,16 +24,14 @@ class ThemeControl
         );
 
         //include required files
-        require template_path('includes/plugins/plate.php');
-        require template_path('includes/plugins/theme-setup.php');
-        require template_path('includes/plugins/editor-filters.php');
+        require get_theme_file_path('includes/plugins/plate.php');
+        require get_theme_file_path('includes/plugins/theme-setup.php');
+        require get_theme_file_path('includes/plugins/editor-filters.php');
 
-        if ( function_exists( 'acf_add_local_field_group' ) ) {
-            //enable theme modules
-            $this->enableModules();
-            // create ACF fields
-            $this->createCustomFields();
-        }
+        //enable theme modules
+        $this->enableModules();
+        // create ACF fields
+        $this->createCustomFields();
 
     }
 
@@ -42,8 +40,9 @@ class ThemeControl
         echo '<pre>',print_r($this->themeSettings),'</pre>';
     }
 
-    protected function enableModules()
+    public function enableModules()
     {
+        (new KeriganSolutions\KMAContactInfo\ContactInfo())->use();
         new Includes\Modules\ContactForm();
 
         new KeriganSolutions\KMARealtor\RealtorDashboard();
@@ -52,9 +51,9 @@ class ThemeControl
         (new KeriganSolutions\KMARealtor\FeaturedLists())->use();
         (new KeriganSolutions\KMARealtor\Listing())->use();
         (new KeriganSolutions\KMARealtor\CustomSearch())->use();
-        
-        $this->enableContactInfo();
-        
+
+        add_action( 'init', [$this, 'enableContactInfo']);
+
         if (get_theme_mod('enable_team')){
             $this->enableTeam();
         }
@@ -72,7 +71,7 @@ class ThemeControl
         }
     }
 
-    protected function enableTeam()
+    public function enableTeam()
     {
         (new KeriganSolutions\KMATeam\Team())->use();
 
@@ -80,10 +79,10 @@ class ThemeControl
             $output =
             '<div class="team-grid">
                 <div class="row justify-content-center">';
-        
+
             $team = new KeriganSolutions\KMATeam\Team();
             $members = $team->queryTeam();
-        
+
             foreach($members as $member){
                 $output .=
                 '<div class="col-md-6 col-lg-4">
@@ -104,15 +103,15 @@ class ThemeControl
                     </div>
                 </div>';
             }
-        
+
             $output .= '</div></div>';
-        
+
             return $output;
         }
         add_shortcode( 'team', 'team_shortcode' );
     }
 
-    protected function enableContactInfo()
+    public function enableContactInfo()
     {
         (new KeriganSolutions\KMAContactInfo\ContactInfo())->addField([
             'key'    => 'agent_id',
@@ -161,26 +160,26 @@ class ThemeControl
         ])->use();
     }
 
-    protected function enableSlider()
+    public function enableSlider()
     {
         new KeriganSolutions\KMASlider\KMASliderModule();
     }
 
-    protected function enableTestimonials()
+    public function enableTestimonials()
     {
         (new KeriganSolutions\KMATestimonials\Testimonial())->use();
     }
 
-    protected function enableSocialSettings()
+    public function enableSocialSettings()
     {
         $socialLinks = new KeriganSolutions\SocialMedia\SocialSettingsPage();
         if (is_admin()) {
             $socialLinks->createPage();
         }
     }
-    
+
     public function requirePostType($postType){
-        require template_path('includes/post-type/' . $postType . '.php');
+        require get_theme_file_path('includes/post-type/' . $postType . '.php');
     }
 
     public function registerSettings($wp_customize) {
@@ -191,7 +190,7 @@ class ThemeControl
         $this->frontPageControls($wp_customize);
     }
 
-    protected function createCustomizerSections($wp_customize)
+    public function createCustomizerSections($wp_customize)
     {
         $wp_customize->add_section( 'wordplate_theme_settings' , array(
             'title'      => __( 'Theme Options', 'wordplate' ),
@@ -199,7 +198,7 @@ class ThemeControl
         ) );
     }
 
-    protected function createThemeSettings($wp_customize)
+    public function createThemeSettings($wp_customize)
     {
         $wp_customize->add_setting( 'header_feature', array(
             'capability' => 'edit_theme_options',
@@ -232,7 +231,7 @@ class ThemeControl
         ) );
     }
 
-    protected function createThemeControls($wp_customize)
+    public function createThemeControls($wp_customize)
     {
         $wp_customize->add_control( 'header_feature', array(
             'label' => __( 'Top Section' ),
@@ -264,7 +263,7 @@ class ThemeControl
 
     }
 
-    protected function frontPageSettings($wp_customize)
+    public function frontPageSettings($wp_customize)
     {
         $wp_customize->add_setting( 'home_header_image', array(
             'capability' => 'edit_theme_options',
@@ -277,27 +276,27 @@ class ThemeControl
             'default' => '',
             'sanitize_callback' => 'absint'
         ) );
-    
+
         $wp_customize->add_setting( 'use_overlay_text', array(
             'capability' => 'edit_theme_options',
             'default' => false,
         ) );
-    
+
         $wp_customize->add_setting( 'overlay_content', array(
             'capability' => 'edit_theme_options',
             'default' => '',
         ) );
-    
+
         $wp_customize->add_setting( 'overlay_color', array(
             'capability' => 'edit_theme_options',
             'default' => '#000000',
         ) );
-    
+
         $wp_customize->add_setting( 'overlay_opacity', array(
             'capability' => 'edit_theme_options',
             'default' => '80%',
         ) );
-    
+
         $wp_customize->add_setting( 'overlay_text_color', array(
             'capability' => 'edit_theme_options',
             'default' => '#FFFFFF',
@@ -309,13 +308,13 @@ class ThemeControl
         ) );
     }
 
-    protected function frontPageControls($wp_customize)
+    public function frontPageControls($wp_customize)
     {
-        
+
         if (get_theme_mod('header_feature') == 'main-image'){
             $wp_customize->add_control(
-                new WP_Customize_Media_Control( 
-                $wp_customize, 'home_header_image', 
+                new WP_Customize_Media_Control(
+                $wp_customize, 'home_header_image',
                 array(
                     'label' => __( 'Main Header Image', 'wordplate' ),
                     'section' => 'static_front_page',
@@ -325,8 +324,8 @@ class ThemeControl
 
         if (get_theme_mod('header_feature') == 'background-video'){
             $wp_customize->add_control(
-                new WP_Customize_Media_Control( 
-                $wp_customize, 'video_upload', 
+                new WP_Customize_Media_Control(
+                $wp_customize, 'video_upload',
                 array(
                     'label' => __( 'Video File', 'wordplate' ),
                     'section' => 'static_front_page',
@@ -334,8 +333,8 @@ class ThemeControl
             ) ) );
 
             $wp_customize->add_control(
-                new WP_Customize_Media_Control( 
-                $wp_customize, 'home_header_image', 
+                new WP_Customize_Media_Control(
+                $wp_customize, 'home_header_image',
                 array(
                     'label' => __( 'Backup Header Image', 'wordplate' ),
                     'section' => 'static_front_page',
@@ -355,7 +354,7 @@ class ThemeControl
             'section' => 'static_front_page'
         ) );
 
-        $wp_customize->add_control( 
+        $wp_customize->add_control(
             new WP_Customize_Color_Control( //Instantiate the color control class
             $wp_customize, 'overlay_color', //Set a unique ID for the control
             array(
@@ -371,7 +370,7 @@ class ThemeControl
             'section' => 'static_front_page'
         ) );
 
-        $wp_customize->add_control( 
+        $wp_customize->add_control(
             new WP_Customize_Color_Control( //Instantiate the color control class
             $wp_customize, 'overlay_text_color', //Set a unique ID for the control
             array(
@@ -391,15 +390,15 @@ class ThemeControl
 
     }
 
-    protected function createCustomFields()
+    public function createCustomFields()
     {
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             $this->registerPageFields();
-            $this->registerFrontPageFields();     
-        }   
+            $this->registerFrontPageFields();
+        }
     }
 
-    protected function registerPageFields()
+    public function registerPageFields()
     {
         acf_add_local_field_group( array (
             'key'      => 'group_page_details',
@@ -425,7 +424,7 @@ class ThemeControl
             'instruction_placement' => 'label',
             'hide_on_screen'        => '',
         ) );
-    
+
         // Image
         acf_add_local_field( array(
             'key'           => 'header_image',
@@ -466,7 +465,7 @@ class ThemeControl
             'parent' => 'group_page_details',
 
         ) );
-    
+
         // Headline
         acf_add_local_field( array(
             'key'          => 'headline',
@@ -476,12 +475,12 @@ class ThemeControl
             'parent'       => 'group_page_details',
             'instructions' => '',
             'required'     => 0,
-        ) );   
+        ) );
 
-        
+
     }
 
-    protected function registerFrontPageFields()
+    public function registerFrontPageFields()
     {
         for($i=1; $i <= $this->themeSettings['number_feature_boxes']; $i++){
             acf_add_local_field_group(array(
@@ -685,10 +684,10 @@ class ThemeControl
                 'active' => 1,
                 'description' => '',
             ));
-    
+
         }
 
 
-        
+
     }
 }

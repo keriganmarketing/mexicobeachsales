@@ -21,7 +21,7 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
         add_shortcode( 'fax_number', [$this, 'faxShortcode'] );
         add_shortcode( 'physical_address', [$this, 'addressShortcode'] );
         add_shortcode( 'hours', [$this, 'hoursShortcode'] );
-        
+
         // add shortcode filter to ACF textarea fields
         add_filter('acf/format_value/type=textarea', 'do_shortcode');
     }
@@ -38,7 +38,7 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
 
     public function formatEmailAddress($key, $atts)
     {
-        return '<span class="' . ($atts['class'] != '' ? 'contact-method '.$atts['class'].' ' : '') . '" >' . 
+        return '<span class="' . ($atts['class'] != '' ? 'contact-method '.$atts['class'].' ' : '') . '" >' .
         ($atts['icon'] == "true" ? '<i class="fa fa-envelope" ></i>' : '') .
         '<a class="contact-content" href="mailto:'.get_field($key,'option').'" >'.get_field($key,'option').'</a>' .
         '</span>';
@@ -75,21 +75,21 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
             $address = get_field($key,'option');
         }
 
-        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' . 
+        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' .
         ($atts['icon'] == "true" ? '<i class="fa fa-map-marker" ></i>' : '') .
         '<span class="contact-content" >' . $address . '</span></span>';
     }
 
     public function formatHours($key, $atts)
     {
-        
+
         if($atts['multiline'] == "true"){
             $address = nl2br(get_field($key,'option'));
         }else{
             $address = get_field($key,'option');
         }
 
-        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' . 
+        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' .
         ($atts['icon'] == "true" ? '<i class="fa fa-clock-o" ></i>' : '') .
         '<span class="contact-content" >' . $address . '</span></span>';
     }
@@ -116,15 +116,15 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
 
     public function formatFaxNumber($key, $atts)
     {
-        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' . 
-        ($atts['icon'] != '' ? '<i class="fa fa-'.$atts['icon'].'"></i> ' : '') . 
+        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' .
+        ($atts['icon'] != '' ? '<i class="fa fa-'.$atts['icon'].'"></i> ' : '') .
         get_field($key,'option') . '</span>';
     }
 
     public function formatPhoneNumber($key, $atts)
     {
-        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' . 
-        ($atts['icon'] != '' ? '<i class="fa fa-'.$atts['icon'].'"></i> ' : '') . 
+        return '<span ' . ($atts['class'] != '' ? 'class="'.$atts['class'].'" ' : '') . '>' .
+        ($atts['icon'] != '' ? '<i class="fa fa-'.$atts['icon'].'"></i> ' : '') .
         '<a class="contact-content" href="tel:'.get_field($key,'option').'" >' .
         get_field($key,'option') . '</a></span>';
     }
@@ -279,7 +279,7 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
         //     ),
         //     'parent' => 'group_contact_info',
         // ));
-    
+
 
         // email
         acf_add_local_field(array(
@@ -337,7 +337,7 @@ class ThemeFields extends \KeriganSolutions\KMAContactInfo\ContactInfo {
             'parent' => 'group_contact_info',
         ));
 
-        
+
 
         acf_add_local_field(array(
             'key' => 'gtm_id',

@@ -23,7 +23,7 @@ class Areas {
         (new Attractions)->use();
     }
 
-    /* 
+    /*
      * Get Areas using REST API endpoint
      */
     public function getPosts( $request )
@@ -35,7 +35,7 @@ class Areas {
     /**
 	 * Add REST API routes
 	 */
-    public function addRoutes() 
+    public function addRoutes()
     {
         register_rest_route( 'kerigansolutions/v1', '/areas',
             [
@@ -56,7 +56,7 @@ class Areas {
 		return current_user_can( 'manage_options' ); // Administrators
     }
 
-    /* 
+    /*
      * Query WP for posts
      */
     public function queryPosts( $limit = -1)
@@ -82,7 +82,7 @@ class Areas {
 
     public function registerFields()
     {
-        
+
     }
 
     /**
@@ -90,7 +90,7 @@ class Areas {
      */
     public function createPostType()
     {
-        
+
         register_post_type( 'area', array(
             'labels'                => array(
                 'name'                  => __( 'Areas', 'kerigansolutions' ),

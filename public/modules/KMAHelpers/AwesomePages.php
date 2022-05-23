@@ -291,7 +291,7 @@ class AwesomePages {
         ));
     }
 
-    public function hasChildren($id) 
+    public function hasChildren($id)
     {
         if( count( get_pages( array( 'child_of' => wp_get_post_parent_id($id) ) ) ) == 0 ) {
             return false;
@@ -316,7 +316,7 @@ class AwesomePages {
 
         $args = array(
             'post_parent' => ($checkId),
-            'post_type'   => get_post_type(), 
+            'post_type'   => get_post_type(),
             'numberposts' => -1,
             'post_status' => 'publish',
             'orderby'     => 'menu_order',
@@ -349,7 +349,7 @@ class AwesomePages {
 
         $args = array(
             'post_parent' => ($id),
-            'post_type'   => get_post_type(), 
+            'post_type'   => get_post_type(),
             'numberposts' => -1,
             'post_status' => 'publish',
             'orderby'     => 'menu_order',

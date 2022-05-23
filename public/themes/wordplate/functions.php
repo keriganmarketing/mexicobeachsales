@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-require template_path('includes/ThemeControl.php');
-require template_path('includes/plugins/plate.php');
-require template_path('post-types/contact_request.php');
+require get_theme_file_path('includes/ThemeControl.php');
+require get_theme_file_path('post-types/contact_request.php');
 $wordplate = new ThemeControl();
 
 // Set theme defaults.
@@ -34,7 +33,7 @@ add_action('after_setup_theme', function () {
         'gallery',
         'image',
         'status',
-        'quote', 
+        'quote',
         'video'
     ]);
 });
@@ -42,16 +41,7 @@ add_action('after_setup_theme', function () {
 // Enqueue and register scripts the right way.
 add_action('wp_enqueue_scripts', function () {
     wp_deregister_script('jquery');
-    wp_enqueue_style('wordplate', mix('styles/main.css'), [], null);
-    wp_register_script('wordplate', mix('scripts/app.js'), '', '', true);
-    wp_enqueue_script('wordplate', mix('scripts/app.js'), '', '', true);
 });
-
-// Custom Blade Cache Path
-add_filter('bladerunner/cache/path', function () {
-    return '../../uploads/.cache';
-});
-
 
 //[quicksearch]
 function quicksearch_func( $atts ){

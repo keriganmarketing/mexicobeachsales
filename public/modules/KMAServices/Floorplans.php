@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace KMA\Modules\KMAServices;
 
 use KMA\Modules\KMAHelpers\CustomTaxonomy;
@@ -10,16 +10,16 @@ class Floorplans {
     {
         //blank on purpose
     }
-    
+
     public function use()
     {
-        
+
         new CustomPostType(
-            'plan', 
-            'Floorplans', 
-            'Floorplan', 
-            'Floorplans', 
-            'screenoptions', 
+            'plan',
+            'Floorplans',
+            'Floorplan',
+            'Floorplans',
+            'screenoptions',
             [
                 'title',
                 'editor',
@@ -29,14 +29,14 @@ class Floorplans {
             ]);
         new CustomTaxonomy(
             'plan-group',
-            'Group', 
-            'Groups', 
-            'plan', 
+            'Group',
+            'Groups',
+            'plan',
             true);
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             add_action( 'init', [$this, 'registerFields'] );
-        }     
+        }
         $this->setupEnpoints();
     }
 

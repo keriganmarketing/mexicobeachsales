@@ -15,10 +15,11 @@
     'sqft' => get_field('sqft'),
     'acreage' => get_field('acreage'),
     'waterfront' => (get_field('waterfront') ? 'on' : null),
-    'status' => get_field('status'),
+    'status' => explode('|',get_field('status')),
+    'sort' => 'list_date|desc'
 ]);
 
-bladerunner('views.pages.customsearch', [
+blade('pages.customsearch', [
     'results'        => $search->getListings(),
     'currentRequest' => $search->getCurrentRequest(),
     'resultsMeta'    => $search->getResultMeta(),

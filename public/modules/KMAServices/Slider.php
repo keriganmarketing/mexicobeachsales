@@ -12,16 +12,16 @@ class Slider {
     {
         //blank on purpose
     }
-    
+
     public function use()
     {
-        
+
         new CustomPostType(
-            'slide', 
-            'Slides', 
-            'Slide', 
-            'Slides', 
-            'slides', 
+            'slide',
+            'Slides',
+            'Slide',
+            'Slides',
+            'slides',
             [
                 'title',
                 'editor',
@@ -29,18 +29,18 @@ class Slider {
                 'custom-fields',
                 'page-attributes'
             ]);
-            
+
         new CustomTaxonomy(
             'slider',
-            'Slider', 
-            'Sliders', 
-            'slide', 
+            'Slider',
+            'Sliders',
+            'slide',
             true);
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             add_action( 'init', [$this, 'registerFields'] );
-        }     
-        
+        }
+
         add_shortcode( 'slider', [$this, 'sliderShortcode'] );
         add_action('rest_api_init', [$this, 'addRoutes']);
     }
@@ -61,7 +61,7 @@ class Slider {
         );
     }
 
-    /* 
+    /*
      * Get slides using REST API endpoint
      */
     public function getSlides( $request )
@@ -79,14 +79,14 @@ class Slider {
         ], $atts, 'slider');
 
         ob_start(); ?>
-        <kma-slider 
-            class="slider-container <?php echo $a['class']; ?>" 
+        <kma-slider
+            class="slider-container <?php echo $a['class']; ?>"
             category="<?php echo $a['category']; ?>"
         ></kma-slider>
         <?php return ob_get_clean();
     }
 
-    /* 
+    /*
      * Query WP for slides
      */
     public function querySlides( $limit = -1, $category = '' )
@@ -428,7 +428,7 @@ class Slider {
             'active' => 1,
             'description' => '',
         ));
-        
+
     }
 
 }

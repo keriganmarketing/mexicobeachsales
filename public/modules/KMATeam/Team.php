@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace KMA\Modules\KMATeam;
 
 use KMA\Modules\KMAHelpers\CustomTaxonomy;
@@ -18,7 +18,7 @@ class Team {
     {
         //blank on purpose
     }
-    
+
     public function use()
     {
         $this->postType = 'team';
@@ -57,7 +57,7 @@ class Team {
         new CustomTaxonomy($this->postType . '-group', $this->singularName . ' Group', $this->singularName . ' Groups', [$this->postType], true);
 
         if (function_exists('acf_add_local_field_group')) {
-            add_action('acf/init', [$this, 'registerFields']);
+            add_action('init', [$this, 'registerFields']);
         }
     }
 
@@ -69,9 +69,9 @@ class Team {
                 'department' => null,
                 'item_class' => 'col-sm-6 col-lg-4 col-xl-3 py-3 mb-4 text-center d-flex flex-column align-items-center',
             ), $atts, 'team' );
-            
+
         $team = $this->query( $atts['limit'], $atts['department'] );
-        
+
         ob_start();
         ?>
         <div class="team row">

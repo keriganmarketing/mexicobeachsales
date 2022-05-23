@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace KMA\Modules\KMAServices;
 
 use KMA\Modules\KMAHelpers\CustomTaxonomy;
@@ -10,16 +10,16 @@ class Reviews {
     {
         //blank on purpose
     }
-    
+
     public function use()
     {
-        
+
         new CustomPostType('review', 'Reviews', 'Review', 'Reviews', 'format-quote');
         //register_taxonomy( 'service-group', 'review' );
 
         if ( function_exists( 'acf_add_local_field_group' ) ) {
             add_action( 'init', [$this, 'registerFields'] );
-        }  
+        }
 
         // $this->setupEnpoints();
         $this->setupShortcodes();
@@ -220,7 +220,7 @@ class Reviews {
             ), $atts, 'testimonials' );
 
         $testimonials = $this->query( $atts['category'], $atts['limit'], $atts['orderby'], $atts['order'] );
-        
+
         ob_start();
         //echo '<pre>', print_r($testimonials), '</pre>';
         ?>

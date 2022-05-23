@@ -1,13 +1,13 @@
 <?php
 /*
  * This file adds ACF controlled fields on pages.
- * 
+ *
  */
 
  // support page attributes
 // Don't die if ACF isn't installed
 if ( function_exists( 'acf_add_local_field_group' ) ) {
-    add_action( 'acf/init', 'registerFields' );
+    add_action( 'init', 'registerFields' );
 }
 
 function registerFields(){
@@ -64,7 +64,7 @@ function registerFields(){
         'parent'       => 'group_page_details',
         'instructions' => '',
         'required'     => 0,
-    ) );   
+    ) );
 
 
 }

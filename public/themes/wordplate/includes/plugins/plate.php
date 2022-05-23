@@ -65,15 +65,12 @@ add_theme_support('plate-disable-toolbar', [
 
 // Disable dashboard tabs.
 add_theme_support('plate-disable-tabs', [
-    'help', 
+    'help',
     //'screen-options'
 ]);
 
 // Set custom permalink structure.
 add_theme_support('plate-permalink', '/%postname%/');
-
-// Set custom login logo.
-add_theme_support('plate-login-logo', asset('assets/images/logo.png'));
 
 // Set custom footer text.
 add_theme_support('plate-footer-text', 'Thank you for creating with <a href="https://wordplate.github.io">WordPlate</a>.');

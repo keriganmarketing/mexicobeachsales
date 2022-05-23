@@ -3,7 +3,7 @@
 $realtorListings = new KeriganSolutions\KMARealtor\RealtorListings();
 $myListings = $realtorListings->getListings();
 
-bladerunner('views.pages.mylistings', [
+blade('pages.mylistings', [
     'results'        => $myListings,
     'numResults'     => count($myListings),
     'currentRequest' => $realtorListings->getCurrentRequest(),

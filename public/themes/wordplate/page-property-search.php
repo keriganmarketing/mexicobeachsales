@@ -2,7 +2,7 @@
 
 $search = new KeriganSolutions\KMARealtor\Search();
 
-bladerunner('views.pages.propertysearch', [
+blade('pages.propertysearch', [
     'results'        => $search->getListings(),
     'currentRequest' => $search->getCurrentRequest(),
     'resultsMeta'    => $search->getResultMeta(),

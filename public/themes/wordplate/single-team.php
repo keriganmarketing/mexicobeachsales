@@ -2,7 +2,7 @@
 
 $headerImageData = get_field('header_image');
 
-bladerunner('views.pages.bio', [
+blade('pages.bio', [
     'team' => [
         'image' => get_field('image'),
         'email' => get_field('email'),

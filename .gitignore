@@ -22,3 +22,5 @@ npm-debug.log
 package-lock.json
 Vagrantfile
 composer.lock
+
+storage/views/*

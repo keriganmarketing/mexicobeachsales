@@ -37,7 +37,7 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 $application = new WordPlate\Application(
-    realpath(dirname(__DIR__))
+    realpath(__DIR__ . '/../')
 );
 
 /*

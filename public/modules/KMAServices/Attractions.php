@@ -46,7 +46,7 @@ class Attractions {
         }
     }
 
-/* 
+/*
      * Get Attractions using REST API endpoint
      */
     public function getPosts( $request )
@@ -62,7 +62,7 @@ class Attractions {
     /**
 	 * Add REST API routes
 	 */
-    public function addRoutes() 
+    public function addRoutes()
     {
         register_rest_route( 'kerigansolutions/v1', '/attractions',
             [
@@ -83,7 +83,7 @@ class Attractions {
 		return current_user_can( 'manage_options' ); // Administrators
     }
 
-    /* 
+    /*
      * Query WP for posts
      */
     public function queryPosts( $limit = -1, $filters = [], $relation = 'AND')
@@ -126,14 +126,14 @@ class Attractions {
             $post->fax_number = get_field('fax_number',$post->ID);
             $post->email_address = get_field('email_address',$post->ID);
             $post->website = get_field('website',$post->ID);
-            
+
             $coords = explode(',', get_field('gps_coords', $post->ID));
             if(is_array($coords) && count($coords) > 1){
                 $post->latitude = trim($coords[0]);
                 $post->longitude = trim($coords[1]);
                 array_push($output, $post);
             }
-            
+
 
             // echo '<pre>',print_r($post),'</pre>';
 
@@ -375,7 +375,7 @@ class Attractions {
      */
     public function createPostType()
     {
-        
+
         register_post_type( 'attraction', array(
             'labels'                => array(
                 'name'                  => __( 'Attractions', 'kerigansolutions' ),

@@ -47,18 +47,18 @@ class Portfolio {
         ], $atts, 'project_tiles');
 
         ob_start(); ?>
-        <project-tiles 
-            class="project-tiles <?php echo $a['container_class']; ?>" 
-            category="<?php echo $a['category']; ?>" 
+        <project-tiles
+            class="project-tiles <?php echo $a['container_class']; ?>"
+            category="<?php echo $a['category']; ?>"
             item-class="<?php echo $a['item_class']; ?>"
         ></project-tiles>
         <?php return ob_get_clean();
     }
-    
+
     /**
 	 * Add REST API routes
 	 */
-    public function addRoutes() 
+    public function addRoutes()
     {
         register_rest_route( 'kerigansolutions/v1', '/projects',
             [
@@ -69,7 +69,7 @@ class Portfolio {
         );
     }
 
-    /* 
+    /*
      * Get Areas using REST API endpoint
      */
     public function getPosts( $request )
@@ -129,7 +129,7 @@ class Portfolio {
             'description' => '',
         ));
 
-        
+
         acf_add_local_field_group(array(
             'key' => 'group_5e005f0eaccd7',
             'title' => 'Project Details',
@@ -199,7 +199,7 @@ class Portfolio {
             'active' => true,
             'description' => '',
         ));
-            
+
     }
 
     /*
@@ -250,7 +250,7 @@ class Portfolio {
      */
     public function createPostType()
     {
-        
+
         register_post_type( $this->postType, array(
             'labels'                => array(
                 'name'                  => __( $this->postNamePlural, 'kerigansolutions' ),

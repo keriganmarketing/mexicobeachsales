@@ -18,7 +18,7 @@ for($i = 1; $i <= $wordplate->themeSettings['number_feature_boxes']; $i++){
 
 $featuredListings = (new KeriganSolutions\KMARealtor\FeaturedListings)->getListings();
 
-bladerunner('views.pages.front', [
+blade('pages.front', [
     'themeSettings'     => $wordplate->themeSettings,
     'headshot'          => wp_get_attachment_url(get_field('agent_photo', 'option'),'medium'),
     'featuredListings'  => true,
